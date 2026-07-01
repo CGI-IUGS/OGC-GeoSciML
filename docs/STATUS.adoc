@@ -77,6 +77,38 @@ mechanical. This is the only place where the Metanorma encoding differs in *form
   the requirements-class tables already carry the full shall-text for every
   requirement.
 
+== First build results (resolved)
+
+The document was compiled with `metanorma compile document.adoc` (Metanorma
+2.9.8, OGC flavour). The build parses cleanly and produces the semantic XML; the
+following was addressed:
+
+* *Fatal (fixed): duplicate anchor `conf_gsml4_core`.* The source reuses the
+  same URI, `/conf/gsml4-core`, for two different conformance classes — the
+  *GeoSciML Core Abstract* class and the *GeoSciML Linked Open Data* class (whose
+  tests are all under `/conf/gsml4-lod/...`). Metanorma requires unique anchors,
+  so the anchors are now de-duplicated (`conf_gsml4_core` and
+  `conf_gsml4_core_2`). The visible URI cells are unchanged (faithful to the
+  source); only the internal anchors differ.
+* *Restored: conformance-class names as table titles.* Every requirements-class
+  and conformance-class table now carries its title (for example “GeoSciML Core
+  Abstract”, “GeoSciML Linked Open Data”), which also clears Metanorma's
+  “table should have title” style warnings.
+
+Remaining messages are non-fatal and expected for a faithful first conversion:
+
+* *“Hanging paragraph in clause” (style).* Emitted where a clause carries an
+  introductory paragraph immediately followed by sub-clauses — common throughout
+  the data dictionary (a class description followed by its property sub-clauses).
+  These render correctly; tightening them is optional editorial polish.
+* *Relaton “does not have a recognised prefix” (informational).* Emitted for the
+  informative Annex C bibliography entries (numbered `1`…`24`) and for
+  non-standard normative references (UCUM, UML, XML, INSPIRE, NADM, etc.).
+  Relaton simply keeps the citation text as authored.
+* Normative references with recognised identifiers (ISO, OGC, RFC) are fetched
+  and enriched from the Relaton repositories during the build, so CI needs
+  network access (the GitHub Actions runner has it).
+
 == To verify on the first CI build
 
 . Build with the OGC Metanorma pipeline (`metanorma compile document.adoc`, or

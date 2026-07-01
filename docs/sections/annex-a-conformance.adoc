@@ -1,6 +1,7 @@
 [appendix]
 == Conformance classes (Normative)
 
+.GeoSciML Conceptual
 [[conf_gsml4_conceptual]]
 [cols="1,4",width="95%"]
 |===
@@ -14,6 +15,7 @@
 |Test type |Capability
 |===
 
+.GeoSciML Core Abstract
 [[conf_gsml4_core]]
 [cols="1,4",width="95%"]
 |===
@@ -52,7 +54,8 @@
 |Test type |Capability
 |===
 
-[[conf_gsml4_core]]
+.GeoSciML Linked Open Data
+[[conf_gsml4_core_2]]
 [cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
@@ -76,6 +79,7 @@
 |Test type |Capability
 |===
 
+.GeoSciML Basic Logical Model
 [[conf_gsml4_basic]]
 [cols="1,4",width="95%"]
 |===
@@ -110,6 +114,7 @@
 |Test method |Visual inspection that the target implementation has a mechanism to constrain lowerValue to match value[0] and upperValue to match value[1]
 |===
 
+.GeoSciML Extension Logical Model
 [[conf_gsml4_extension]]
 [cols="1,4",width="95%"]
 |===
@@ -131,6 +136,7 @@
 |Test method |Visual inspection that the target implementation has a mechanism to constrain on of heave, horizontalSlip or throw to be non-null
 |===
 
+.GeoSciML Timescale Logical Model
 [[conf_gsml4_timescale]]
 [cols="1,4",width="95%"]
 |===
@@ -144,6 +150,7 @@
 |Test method |Visual inspection that the target implementation has a mechanism to check that the age of the start TimeOrdinalEraBoundary is older than the age of the “end” TimeOrdinalEraBoundary
 |===
 
+.GeoSciML Borehole Logical Model
 [[conf_gsml4_borehole]]
 [cols="1,4",width="95%"]
 |===
@@ -190,6 +197,7 @@
 |Test method |Visual inspection to check that the target implementation has a mechanism to constrain OriginPosition::elevation CRS to a value in the range EPSG:5600 to EPSG:5799
 |===
 
+.GeoSciML LaboratoryAnalysis-Specimen Logical Model
 [[conf_gsml4_lab_analysis]]
 [cols="1,4",width="95%"]
 |===
@@ -212,6 +220,7 @@
 |Test method |Visually check target implementation for the presence of the mechanism that verifies that the nameOfMeasure is a term from a controlled vocabulary
 |===
 
+.GeoSciML Lite Logical
 [[conf_gsml4_lite]]
 [cols="1,4",width="95%"]
 |===
@@ -277,6 +286,7 @@
 |Test method |Check that the target implementation implements mechanism to ensure that the rotation is in the range [0,360[
 |===
 
+.GeoSciML XML Encoding Abstract Core
 [[conf_gsml4xsd]]
 [cols="1,4",width="95%"]
 |===
@@ -302,6 +312,7 @@
 |Test method |Visually inspect instance to validate the presence of time zone indicators.
 |===
 
+.GeoSciML Basic XML Encoding
 [[conf_gsml4xsd_basic]]
 [cols="1,4",width="95%"]
 |===
@@ -319,6 +330,7 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
+.GeoSciML Extension XML Encoding
 [[conf_gsml4xsd_extension]]
 [cols="1,4",width="95%"]
 |===
@@ -336,6 +348,7 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
+.GeoSciML GeologicTime XML Encoding
 [[conf_gsml4xsd_geologictime]]
 [cols="1,4",width="95%"]
 |===
@@ -353,6 +366,7 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
+.GeoSciML Borehole XML Encoding
 [[conf_gsml4xsd_borehole]]
 [cols="1,4",width="95%"]
 |===
@@ -371,6 +385,7 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
+.GeoSciML LaboratoryAnalysis-Specimen XML Encoding
 [[conf_gsml4xsd_lab]]
 [cols="1,4",width="95%"]
 |===
@@ -389,6 +404,7 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
+.GeoSciML Lite XML Abstract Encoding
 [[conf_gsml4xsd_lite]]
 [cols="1,4",width="95%"]
 |===
@@ -402,6 +418,7 @@
 |Test method |Perform the test in OGC 05-033r9 Annex A
 |===
 
+.GeoSciML Lite XML Encoding for GML
 [[conf_gsml4xsd_lite_31]]
 [cols="1,4",width="95%"]
 |===

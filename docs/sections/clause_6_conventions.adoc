@@ -40,6 +40,7 @@ where /req/[classM]/[reqN] identifies the requirement or recommendation. The use
 
 Conformance to this specification is possible at a number of levels, specified by conformance classes (Annex A). Each conformance class is summarized using the following template:
 
+.Conformance class
 [[conf_classm]]
 [cols="1,4",width="95%"]
 |===
