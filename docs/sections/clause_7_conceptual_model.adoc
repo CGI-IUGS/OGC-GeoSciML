@@ -23,3 +23,10 @@ A target logical model, when claiming compliance with this conceptual model, SHA
 |===
 
 Target logical models that are compliant with the conceptual model shall implement components of the conceptual model respecting their semantics, i.e. their definition and intent. In other words, the logical model must be highly semantically similar to components of the conceptual model. Semantic similarity can be tested in multiple ways, including but not limited to: (i) direct comparison of UML components, (ii) comparison after mapping components to a common expressive knowledge representation language, such as first order logic or common logic, or (iii) comparison after mapping components to a reference ontology. The target can reuse and adapt existing logical models.
+
+[[req_gsml4_conceptual_similarity]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-conceptual/similarity {set:cellbgcolor:#FFFFFF}
+2+|A target logical model, when claiming compliance with this conceptual model, SHALL implement its components (classes, attributes, relationships) respecting the conceptual model definitions and intent, such that high semantic similarity is obtained between the logical and conceptual model components. {set:cellbgcolor:#FFFFFF}
+|===

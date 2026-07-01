@@ -10,8 +10,6 @@ The UML model provides name, structure and cardinality for data elements composi
 
 Figure 8 shows requirements class dependencies:
 
-Figure: Start
-
 [[figure-8]]
 .Logical Model Requirements classes dependencies (external dependencies not shown)
 image::images/figure-008.png[Logical Model Requirements classes dependencies (external dependencies not shown)]
@@ -91,21 +89,56 @@ This section presents requirements to which all target encodings must conform in
 
 ==== Naming of entities
 
+[[req_gsml4_core_uml_entity_name]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-core/uml-entity-name {set:cellbgcolor:#FFFFFF}
+2+|When the target implementation allows it, the exact name of the classifier SHALL be used. {set:cellbgcolor:#FFFFFF}
+|===
+
 If a target implementation is capable of encoding all the artefacts (classes and properties) using the same names used in UML, it shall do so. Some target implementations might prevent it; for example, dBase (DBF files) column names are restricted to 10 characters or some RDBMS limits the use of camel case names. But if the target allows it, the exact names shall be used.
 
 ==== Cardinality
+
+[[req_gsml4_core_uml_cardinality]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-core/uml-cardinality {set:cellbgcolor:#FFFFFF}
+2+|If the target implementation allows it, it SHALL implement the same cardinality of properties and associations as defined in the UML. {set:cellbgcolor:#FFFFFF}
+|===
 
 Cardinality shall be the same as defined in UML model. Since essentially all properties are optional, this clause addresses the upper bounds of cardinality: “1” or “many” in almost all cases. Therefore, if the UML model limits a property’s maximum cardinality to “1”, then the target implementation cardinality cannot be “many”.
 
 ==== Abstract classes
 
+[[req_gsml4_core_uml_abstract]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-core/uml-abstract {set:cellbgcolor:#FFFFFF}
+2+|Abstract classes SHALL NOT be materialised. {set:cellbgcolor:#FFFFFF}
+|===
+
 Not all physical implementations support the concept of an abstract class, or even inheritance and polymorphism. XSD does support that concept and all its implications, but JSON does not – although JavaScript can somewhat. This requirement specifies that the encoding specification shall not allow materialisation of an instance of a class stereotyped as abstract.
 
 ==== Polymorphism
 
+[[req_gsml4_core_uml_polymorphism]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-core/uml-polymorphism {set:cellbgcolor:#FFFFFF}
+2+|A target implementation SHALL implement type substitutions inferred from the UML model. {set:cellbgcolor:#FFFFFF}
+|===
+
 The type hierarchy of the UML model implies type substitutions for property values. For instance, a property value of type GeologicEvent can be substituted by a value of type DisplacementEvent because DisplacementEvent is a subtype of GeologicEvent. Many property types are abstract types and only a concrete subtype may be materialised (as per /req/gsml4-core/uml-abstract). A target implementation shall consider type substitutions using mechanisms available for this implementation.
 
 ==== Quantities
+
+[[req_gsml4_core_quantities_uom]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-core/quantities-uom {set:cellbgcolor:#FFFFFF}
+2+|Quantities and measurements SHALL have explicit units of measure from a governed ontology. {set:cellbgcolor:#FFFFFF}
+|===
 
 The quantities and measurements units of measure shall be taken from a standard vocabulary governed by an appropriate community, for example the Unified Code for Units of Measure (UCUM).
 
@@ -113,11 +146,23 @@ The quantities and measurements units of measure shall be taken from a standard 
 
 A QuantityRange is a quantity formed of a lower and upper value forming a range of values. If a single value needs to be represented as a QuantityRange, where the single value is assigned to both lower and upper properties.
 
+[[req_gsml4_core_quantities_single_range]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-core/quantities-single-range {set:cellbgcolor:#FFFFFF}
+2+|QuantityRange properties that must report a single value SHALL assign both lower and upper value as equal to that single value. {set:cellbgcolor:#FFFFFF}
+|===
+
 ==== Code lists
 
-All properties that require formal vocabularies are modelled in the UML as classes having the stereotype «CodeList». The list of valid terms is either prescribed by this specification, with a list of possible entries (Figure 9) or open (i.e., without any terms).
+[[req_gsml4_core_codelist]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-core/codelist {set:cellbgcolor:#FFFFFF}
+2+|Empty classes with stereotype «CodeList» SHALL be implemented as externally governed vocabularies which terms are encoded as URI (RFC 3986). {set:cellbgcolor:#FFFFFF}
+|===
 
-Figure: Start
+All properties that require formal vocabularies are modelled in the UML as classes having the stereotype «CodeList». The list of valid terms is either prescribed by this specification, with a list of possible entries (Figure 9) or open (i.e., without any terms).
 
 [[figure-9]]
 .Example CodeLists, with a) a prescribed list of terms (DescriptionPurpose) and b) “open” with no prescribed terms (GeologicUnitHierarchyRoleTerm)
@@ -143,6 +188,8 @@ This requirement does not require that URIs be actually dereferenceable, but jus
 URI used for vocabulary terms SHALL be dereferenceable to one or more representations of the vocabulary term. {set:cellbgcolor:#FFFFFF}
 |*Requirement 2* {set:cellbgcolor:#CACCCE} |/req/gsml4-lod/identifier +
 HTTP URI used as entity identifiers SHALL be to one or more representations of that entity. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 1* {set:cellbgcolor:#CACCCE} |/req/gsml4-lod/gsml-representation +
+Dereferenceable HTTP URI used as identifiers SHOULD provide GeoSciML 4.1 as one of its representations. {set:cellbgcolor:#FFFFFF}
 |*Requirement 3* {set:cellbgcolor:#CACCCE} |/req/gsml4-lod/byref +
 External references to an entity conforming to [/req/gsml4-lod/identifier] shall be expressed using this entity identifier. {set:cellbgcolor:#FFFFFF}
 |===
@@ -157,15 +204,43 @@ It is important to note that a HTTP URI in this context is both an identifier an
 
 ==== Code lists URI
 
+[[req_gsml4_lod_codelisturi]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lod/codelistURI {set:cellbgcolor:#FFFFFF}
+2+|URI used for vocabulary terms SHALL be dereferenceable to one or more representations of the vocabulary term. {set:cellbgcolor:#FFFFFF}
+|===
+
 The requirement described at 8.2.7 in Abstract Requirements Class demand that a vocabulary reference be encoded as a URI, but does not require that the URI actually resolve to anything (it could, but it is not required). In this class, the target must ensure that the URI used to identify vocabulary terms SHALL dereference to one or more representations of a definition of the term (eg, RDF/SKOS, HTML, GML Definition, etc.)
 
 ==== Identifier
 
+[[req_gsml4_lod_identifier]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lod/identifier {set:cellbgcolor:#FFFFFF}
+2+|HTTP URI used as entity identifiers SHALL be to one or more representations of that entity. {set:cellbgcolor:#FFFFFF}
+|===
+
 This requirement demands that the target ensures that a data instance exposes a URI as a unique identifier for this feature and this identifier SHALL be dereferenceable to one or more representations of that feature.
+
+[[req_gsml4_lod_gsml_representation]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lod/gsml-representation {set:cellbgcolor:#FFFFFF}
+2+|Dereferenceable HTTP URI used as identifiers SHOULD provide GeoSciML 4.1 as one of its representations. {set:cellbgcolor:#FFFFFF}
+|===
 
 It is expected that one of the representations should be a XML (GML) or any GeoSciML compliant representations, including any profiles derived from this specification.
 
 ==== ByReference associations
+
+[[req_gsml4_lod_byref]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lod/byref {set:cellbgcolor:#FFFFFF}
+2+|External references to an entity conforming to [/req/gsml4-lod/identifier] shall be expressed using this entity identifier. {set:cellbgcolor:#FFFFFF}
+|===
 
 Serialization of a dataset will often omit the full description of a feature and replace the property value with an external reference. A reference to this feature is formed by the dereferenceable identifier described in clause 8.3.2. A client ingesting the dataset can use this reference to extract a feature representation if need be. Over the web, this reference shall be a HTTP URI that can be dereferenced to one or more representations of that feature.
 
@@ -199,8 +274,6 @@ The QuantityRange’s value[0] SHALL provide the same value as lowerValue and va
 
 Basic package provides a collection of classes representing fundamental geological and geomorphological features (units, structures, and events), earth materials, geologic time, and the relations between them. It limits the number of descriptive properties to match important common use cases, including the INSPIRE geological theme specification [8].
 
-Figure: Start
-
 [[figure-10]]
 .GeoSciML Basic dependencies.
 image::images/figure-010.png[GeoSciML Basic dependencies.]
@@ -211,8 +284,6 @@ GeologyBasic is a package of classes representing fundamental geological map fea
 
 Figure 11 shows the fundamental relationships between a MappedFeature and the GeologicFeature. GeologicFeature is further subtyped into GeologicUnit, GeologicStructure, GeomorphologicFeature and GeologicEvent.
 
-Figure: Start
-
 [[figure-11]]
 .Geologic Feature and MappedFeature.
 image::images/figure-011.png[Geologic Feature and MappedFeature.]
@@ -220,8 +291,6 @@ image::images/figure-011.png[Geologic Feature and MappedFeature.]
 ===== GeologicFeature
 
 The abstract GeologicFeature class represents a conceptual feature that is hypothesized to exist coherently in the world. It corresponds with a “legend item” from a traditional geologic map and its instance acts as the “description package”. The description package is classified according to its intended purpose as a _typicalNorm_, _definingNorm or instance_. GeologicFeature can be used outside the context of a map (it can lack a MappedFeature), for example when describing typical norms (describing expected property from a feature) or defining norms (describing properties required from a feature to be classifying in a group, such as given geologic unit). A GeologicFeature appearing on a map is considered as an “instance”.
-
-Figure: Start
 
 [[figure-12]]
 .Geologic Feature context diagram
@@ -234,6 +303,13 @@ The GeologicFeature observationMethod (SWE::Category) specifies the approach to 
 ObservationMethod is a convenience property that provides a simple approach to observation metadata when data are reported using a feature view (as opposed to observation view). This property corresponds (loosely) to ISO19115 Lineage.
 
 ====== purpose
+
+[[req_gsml4_basic_geologicfeature_purpose]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-basic/geologicfeature-purpose {set:cellbgcolor:#FFFFFF}
+2+|Purpose SHALL be a value from Table 2 of clause 8.4.1.1.2 . {set:cellbgcolor:#FFFFFF}
+|===
 
 The property purpose:DescriptionPurpose specifies the intended purpose/level of abstraction for a given feature or object instance. The possible values are: *instance*, *typicalNorm*, and *definingNorm*.
 
@@ -309,8 +385,6 @@ The specification association links an instance of MappedFeature to the GFI_Feat
 
 Conceptually, a GeologicUnit may represent a body of material in the Earth whose complete and precise extent is inferred to exist (e.g., North American Data Model GeologicUnit [12], Stratigraphic unit in the sense of NACSN [14], or International Stratigraphic Code [9]), or a classifier used to characterize parts of the Earth (e.g. lithologic map unit like ‘granitic rock’ or ‘alluvial deposit’, surficial units like ‘till’ or ‘old alluvium’). It includes both formal units (i.e. formally adopted and named in an official lexicon) and informal units (i.e. named but not promoted to a lexicon) and unnamed units (i.e., recognizable, described and delineable in the field but not otherwise formalised). In simpler terms, a geologic unit is a package of earth material (generally rock).
 
-Figure: Start
-
 [[figure-13]]
 .GeologicUnit context diagram.
 image::images/figure-013.png[GeologicUnit context diagram.]
@@ -381,8 +455,6 @@ The material:EarthMaterial property contains the material description (8.4.1.6) 
 
 The EarthMaterial class holds a description of a naturally occurring substance in the Earth. EarthMaterial represents material composition or substance, and is thus independent of quantity or location. Ideally, EarthMaterials are defined strictly based on physical properties, but because of standard geological usage, genetic interpretations enter into the description as well.
 
-Figure: Start
-
 [[figure-14]]
 .EarthMaterial and related classes.
 image::images/figure-014.png[EarthMaterial and related classes.]
@@ -402,8 +474,6 @@ The property gbEarthMaterialDescription:EarthMaterialAbstractDescription provide
 ===== CompoundMaterial
 
 A CompoundMaterial is an EarthMaterial composed of particles made of EarthMaterials, possibly including other CompoundMaterials. This class is provided primarily as an extensibility point for related domain models that wish to import and build on GeoSciML, and wish to define material types that are compound but are not rock or rock-like material. In the context of GeoSciML "RockMaterial" should be used to describe units made of rock.
-
-Figure: Start
 
 [[figure-15]]
 .Context diagram for CompoundMaterial
@@ -427,8 +497,6 @@ The age attributes are representations of a particular geological event or featu
 
 Specifications of age in years before present are based on determination of time durations based on interpretation of isotopic analyses of EarthMaterial (some other methods are used for geologically young materials). Ages specified by geological time scales are essentially based on correlation of a geological unit with a standard chronostratigraphic unit that serves as a reference. Relative ages are based on relationships between geological units such as superposition, intruded by, cross-cuts, or “contains inclusions of” (a.k.a, Steno laws [17]).
 
-Figure: Start
-
 [[figure-16]]
 .Geologic Event summary diagram.
 image::images/figure-016.png[Geologic Event summary diagram.]
@@ -439,7 +507,21 @@ A GeologicEvent is an identifiable event during which one or more geological pro
 
 Because associated processes are incompatible, a single event cannot be shared between DisplacementEvent, AlterationDescription of MetamorphicDescription (a process associated to DisplacementEvent does not apply to AlterationDescription).
 
+[[req_gsml4_basic_geologicevent_single]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-basic/geologicevent-single {set:cellbgcolor:#FFFFFF}
+2+|An individual event GeologicEvent SHALL only apply to one of DisplacementEvent, AlterationDescription or MetamorphicDescription. {set:cellbgcolor:#FFFFFF}
+|===
+
 A geologic event must at least have one age representation, either numerical or named.
+
+[[req_gsml4_basic_geologicevent_non_null]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-basic/geologicevent-non-null {set:cellbgcolor:#FFFFFF}
+2+|Either (olderNamedAge + youngerNamedAge) or numericAge SHALL not be null. {set:cellbgcolor:#FFFFFF}
+|===
 
 ====== eventProcess
 
@@ -489,8 +571,6 @@ GeologicStructure is grounded in relationships between parts of a rock or rock b
 
 A disaggregated heap of particles does not have structure, and can only be described in terms of the mineralogy and geometrical character of the constituent particles. Geologic structures are more likely to be found in, and are more persistent in, consolidated materials than in unconsolidated materials. Properties like “clast-supported”, “matrix-supported”, and “graded bed” that do not involve orientation are considered kinds of GeologicStructure because they depend on the configuration of parts of a rock body.
 
-Figure: Start
-
 [[figure-17]]
 .Summary diagram of Geologic structures.
 image::images/figure-017.png[Summary diagram of Geologic structures.]
@@ -502,8 +582,6 @@ A geologic structure is a configuration of matter in the Earth based on describa
 ===== Contact
 
 A contact is a general concept representing any kind of surface separating two geologic units, including primary boundaries such as depositional contacts, all kinds of unconformities, intrusive contacts, and gradational contacts, as well as faults that separate geologic units.
-
-Figure: Start
 
 [[figure-18]]
 .Contact context diagram
@@ -520,8 +598,6 @@ The property stContactDescription:ContactAbstractDescription provides a detailed
 ===== Fold
 
 A fold is formed by one or more systematically curved layers, surfaces, or lines in a rock body. A fold denotes a structure formed by the deformation of a geologic structure, such as a contact which the original undeformed geometry is presumed, to form a structure that may be described by the translation of an abstract line (the fold axis) parallel to itself along some curvilinear path (the fold profile). Folds have a hinge zone (zone of maximum curvature along the surface) and limbs (parts of the deformed surface not in the hinge zone). Folds are described by an axial surface, hinge line, profile geometry, the solid angle between the limbs, and the relationships between adjacent folded surfaces if the folded structure is a Layering fabric.
-
-Figure: Start
 
 [[figure-19]]
 .Fold context diagram.
@@ -541,8 +617,6 @@ A foliation is a planar arrangement of textural or structural features in any ty
 
 Bedding is a fabric representing the average orientation of paleodepositional surface and should be encoded through the foliationType property. It might apply to bedding that is layering or a foliation without layering (e.g. clast alignment in amalgamated beds).
 
-Figure: Start
-
 [[figure-20]]
 .Foliation context diagram
 image::images/figure-020.png[Foliation context diagram]
@@ -558,8 +632,6 @@ The property stFoliationDescription:FoliationAbstractDescription provides a deta
 ===== ShearDisplacementStructure
 
 A shear displacement structure includes all brittle to ductile style structures along which displacement has occurred, from a simple, single ‘planar’ brittle or ductile surface to a fault system comprised of tens of strands of both brittle and ductile nature. This structure may have some significant thickness (a deformation zone) and have an associated body of deformed rock that may be considered a deformation unit (which geologicUnitType is ‘DeformationUnit’) which can be associated to the ShearDisplacementStructure using GeologicFeatureRelation from the GeoSciML Extension package (8.5.1.2).
-
-Figure: Start
 
 [[figure-21]]
 .ShearDisplacementStructure context diagram
@@ -577,8 +649,6 @@ The property stStructureDescription:ShearDisplacementStructureAbstractDescriptio
 
 The Geomorphology sub-package describes features that comprise the shape and nature of the Earth’s land surface (i.e., landforms). These landforms may be created by natural or anthropogenic processes.
 
-Figure: Start
-
 [[figure-22]]
 .Geomorphologic feature summary diagram
 image::images/figure-022.png[Geomorphologic feature summary diagram]
@@ -586,8 +656,6 @@ image::images/figure-022.png[Geomorphologic feature summary diagram]
 ===== GeomorphologicFeature
 
 A geomorphologic feature is a kind of GeologicFeature describing the shape and nature of the Earth’s land surface. These landforms may be created by natural Earth processes (e.g., river channel, beach, moraine or mountain) or through human (anthropogenic) activity (e.g., dredged channel, reclaimed land, mine waste dumps). In GeoSciML, the geomorphologic feature is modelled as a feature related (through unitDescription property) to a GeologicUnit that composes the form.
-
-Figure: Start
 
 [[figure-23]]
 .Partial encoding of landform located in Elba Island as part of a geomorphological unit (encoded from a map from D’Orefice et al, 2009)
@@ -626,8 +694,6 @@ The anthropogenicGeomorphologicFeatureType: AnthropogenicGeomorphologicFeatureTy
 ==== Collection
 
 A GeoSciML collection is a convenience class to manage sets of features or type instances. A collection contains classes that facilitate the structuring of WFS response documents and other application uses.
-
-Figure: Start
 
 [[figure-24]]
 .GSML collection summary diagram.
@@ -689,8 +755,6 @@ This requirements class does not impose any encoding style for Union stereotype,
 
 GeoSciML Data is a package of data types that describes the planar or linear orientation of a geologic feature using conventions used in geology. They allow specifying direction by a numerical direction vector (e.g., dip/dip direction), or as a description (e.g., compass point (NE), or other text - “toward fold hinge”, “below”). An additional GSML_QuantityRange class extends SWE::QuantityRange to allow upper and lower values in a numerical range to be delivered as two separate attributes. This is to facilitate query operations on upper and lower values by providing explicit names for these values (which are otherwise encoded as anonymous members of an array in SWE common).
 
-Figure: Start
-
 [[figure-25]]
 .Summary diagram of specialised GeoSciML data types
 image::images/figure-025.png[Summary diagram of specialised GeoSciML data types]
@@ -710,6 +774,13 @@ The descriptionOrientation:Primitive::CharacterString contains a textual specifi
 ===== GSML_PlanarOrientation
 
 A planar orientation is composed of two values; the azimuth (a compass point) and a dip (the angle from the horizontal). Polarity of the plane indicates whether the planar orientation is associated with a directed feature that is overturned, upright, vertical, etc. There are several conventions to encode a planar orientation and this specification does not impose one but provides a convention property to report it. It must be noted that allowance for different conventions makes manipulation of the data more difficult. Therefore it is recommended that user communities adopt a single measurement convention.
+
+[[req_gsml4_basic_plane_pol_dip_az_not_null]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-basic/plane-pol-dip-az-not-null {set:cellbgcolor:#FFFFFF}
+2+|At least one of polarity, azimuth or dip SHALL not be null. {set:cellbgcolor:#FFFFFF}
+|===
 
 To have any meaningful value, the planar orientation shall have at least a value for polarity, azimuth or dip.
 
@@ -732,6 +803,13 @@ The polarity:PolarityCode indicates whether the planar orientation is associated
 ===== GSML_LinearOrientation
 
 A linear orientation is composed of a trend (the compass orientation of the line) and a plunge (the angle from the horizontal). This vector may be oriented (pointing in a specific direction) or not.
+
+[[req_gsml4_basic_linear_trend_plunge_not_null]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-basic/linear-trend-plunge-not-null {set:cellbgcolor:#FFFFFF}
+2+|At least one of plunge or trend SHALL NOT be null. {set:cellbgcolor:#FFFFFF}
+|===
 
 To have any meaningful value, an instance of GSML_LinearOrientation shall at least have a trend or a plunge value.
 
@@ -759,15 +837,27 @@ The magnitude property (SWE::QuantityRange) reports the magnitude of the vector.
 
 GSML_QuantityRange is a specialization of SWE Common QuantiytyRange (OGC 08-094r1, Clause 7.2.13) where lower and upper values are made explicit. SWE::QuantityRange uses an array of values (RealPair, see Clause OGC 08-094r1,7.2.1) where the lowest value is the first element and the highest the second. This convenience data type has been created as an alternative encoding for implementations that do no support encoding of arrays in a single field (e.g. DBF) or reference to elements in string encoded arrays (eg. Filter Encoding Specification 2.0 – OGC 09-029r2).
 
-Figure: Start
-
 [[figure-26]]
 .Context diagram for QuantityRange making lower and upper values explicit
 image::images/figure-026.png[Context diagram for QuantityRange making lower and upper values explicit]
 
 The lowerValue shall be less than or equal to the upperValue.
 
+[[req_gsml4_basic_quantity_range_order]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-basic/quantity-range-order {set:cellbgcolor:#FFFFFF}
+2+|The QuantityRange lowerValue SHALL be less than or equal to the upperValue. {set:cellbgcolor:#FFFFFF}
+|===
+
 The values reported in lowerValue and upperValue shall be the same as the pair of values in inherited values property.
+
+[[req_gsml4_basic_quantity_range_repeat]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-basic/quantity-range-repeat {set:cellbgcolor:#FFFFFF}
+2+|The QuantityRange’s value[0] SHALL provide the same value as lowerValue and value[1] SHALL provide the same value as upperValue. {set:cellbgcolor:#FFFFFF}
+|===
 
 ====== lowerValue
 
@@ -778,8 +868,6 @@ The property lowerValue:Real contains the lower bound of the range. It shall be 
 The property upperValue:Real contains the upper bound of the range. It shall be a copy of inherited SWE::QuantityRange::value[1].
 
 Example:
-
-Figure: Start
 
 [[figure-27]]
 .Encoding of a quantity range of [15.6,26.7]. Note that the value is encoded in both lowerValue, upperValue and in value as an array.
@@ -866,13 +954,9 @@ Geology is a descriptive science and uses vocabularies extensively. Table 4 list
 
 The following figure shows a partial encoding of an existing map from Drewes [3]. This example has been chosen because it was selected for a similar exercise for the North American Data Model (http://ngmdb.usgs.gov/www-nadm/dmdt/). Figure 28 shows a small section of a map showing unit Ttv (Dacitic vent breccia) from a quadrangle in Arizona, USA. The original legend description is shown in Figure 29.
 
-Figure: Start
-
 [[figure-28]]
 .Excerpt from Drewes map [3] with a Dacitic vent breccia unit highlighted (Ttv)
 image::images/figure-028.png[Excerpt from Drewes map [3] with a Dacitic vent breccia unit highlighted (Ttv)]
-
-Figure: Start
 
 [[figure-29]]
 .Original description from Drewes map [3] legend. This legend item is represented as a GeologicFeature (specifically, a GeologicUnit)
@@ -880,13 +964,9 @@ image::images/figure-029.png[Original description from Drewes map [3] legend. Th
 
 The map also has a cross section through the same Ttv unit (Figure 30) showing an example of a non-map mapping frame.
 
-Figure: Start
-
 [[figure-30]]
 .The same Dacitic vent breccia unit, shown in a cross section (a different MappingFrame)
 image::images/figure-030.png[The same Dacitic vent breccia unit, shown in a cross section (a different MappingFrame)]
-
-Figure: Start
 
 [[figure-31]]
 .Partial encoding of the Dacitic vent breccia unit from Drewes’ map [3] partitioned into GeoSciML instances.
@@ -913,15 +993,11 @@ SlipComponents SHALL have at least one of heave, horizontalSlip or throw as a no
 
 The extension package provides classes to further the descriptions of basic classes by adding more properties and supplemental relations. It extends abstract description stubs declared in basic package and introduces new GeologicStructure features.
 
-Figure: Start
-
 [[figure-32]]
 .GeoSciML extension package dependencies.
 image::images/figure-032.png[GeoSciML extension package dependencies.]
 
 ==== GeologicRelation
-
-Figure: Start
 
 [[figure-33]]
 .Summary diagram of GeologicFeatureRelation as a concrete subtype of AbstractFeatureRelation stub class
@@ -938,6 +1014,13 @@ To allow geologic age description in GeoSciML Basic without GeologicFeatureRelat
 
 To prevent confusion and promote consistency, especially in query scenarios, association between GeologicFeature and GeologicEvent, for the purpose of describing geologic history, and therefore geologic age, shall use the geologicHistory property. A GeologicFeatureRelation can be used in any other circumstances.
 
+[[req_gsml4_extension_geologicfeature_history]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-extension/geologicfeature-history {set:cellbgcolor:#FFFFFF}
+2+|A GeologicFeatureRelation SHALL not be used between a GeologicFeature and GeologicEvent if GeologicFeature::geologicHistory can provide the same information. {set:cellbgcolor:#FFFFFF}
+|===
+
 ===== GeologicFeatureRelation
 
 The GeologicFeatureRelation class defines the general structure used to define relationships between any GeoSciML feature types. Relationships are always binary and directional. There is always a single source and a single target. The relationship is always defined from the perspective of the Source and is generally an active verb.
@@ -945,8 +1028,6 @@ The GeologicFeatureRelation class defines the general structure used to define r
 Example: a Source may point to an intrusive igneous rock unit. In this case, the Target would point to the appropriate host rock body and the relationship attribute would be ‘intrudes’. Other appropriate relationship attributes might include: overlies, offsets, crosscuts, folds, etc.
 
 Many other types of relationships can also be accommodated via GeologicRelation, for example, topological relations could be described where they are geologically significant.
-
-Figure: Start
 
 [[figure-34]]
 .Generic geologic feature relation
@@ -969,8 +1050,6 @@ The property targetRole:RelationRoleTerm contains a term from a controlled vocab
 The MaterialRelation class describes the relationships between constituent parts in an EarthMaterial (e.g. A mineral overgrowth on a phenocryst within a granite).
 
 Example: Consider an overgrowth of albite on plagioclase in a granite. The Source would originate with the albite constituentPart description. In this case, the Target would point to the plagioclase constituentPart description and the relationship attribute would be ‘overgrowth’ and the sourceRole is ‘overgrows’. Other appropriate role attributes might include: crosscuts, replaces, etc. for crosscutting and replacement relationships. Inverse relationships must be explicitly recorded.
-
-Figure: Start
 
 [[figure-35]]
 .Material relation context diagram.
@@ -1000,15 +1079,11 @@ EarthMaterialDescription abstract class is materialised into a series of concret
 * MetamorphicDescription
 * CompoundMaterialDescription
 
-Figure: Start
-
 [[figure-36]]
 .Overview of earth material description.
 image::images/figure-036.png[Overview of earth material description.]
 
 ===== AlterationDescription
-
-Figure: Start
 
 [[figure-37]]
 .Alteration description context diagram.
@@ -1016,15 +1091,11 @@ image::images/figure-037.png[Alteration description context diagram.]
 
 AlterationDescription describes aspects of a geologic unit or earth material that are the result of bulk chemical, mineralogical or physical changes related to change in the physical or chemical environment. It includes weathering, supergene alteration, hydrothermal alteration and metasomatic effects not considered metamorphic. For example, a soil profile description would have to be constructed as a GeologicUnit (geologicUnitType = PedologicUnit) with unit parts representing the various horizons in the profile. Thickness of a weathering profile can be delivered as unitThickness of a GeologicUnit of geologicUnitType equal to “AlterationUnit” (Figure 38).
 
-Figure: Start
-
 [[figure-38]]
 .Example of a weathering profile.
 image::images/figure-038.png[Example of a weathering profile.]
 
 An example encoding of an altered geologic unit from Drewes [3] is shown in Figure 39.
-
-Figure: Start
 
 [[figure-39]]
 .Example of describing alteration halo from Drewes [3].
@@ -1054,8 +1125,6 @@ The property alterationEvent is an association between an AlterationDescription 
 
 ChemicalComposition is a kind of EarthMaterialDescription that delivers the chemical composition of a geological unit or earth material, as a list of element or oxide concentrations.
 
-Figure: Start
-
 [[figure-40]]
 .Chemical composition context diagram.
 image::images/figure-040.png[Chemical composition context diagram.]
@@ -1067,8 +1136,6 @@ The chemicalAnalysis property (SWE:DataRecord) contains a collection of geochemi
 ===== CompoundMaterialDescription
 
 The CompoundMaterialDescription class is a kind of EarthMaterialDescription that provides an extended description of a compound earth material (i.e., rocks and unconsolidated solid earth materials).
-
-Figure: Start
 
 [[figure-41]]
 .Compound material description context diagram.
@@ -1093,8 +1160,6 @@ The property constituent is an association between a CompoundMaterialDescription
 ===== ParticleGeometryDescription
 
 ParticleGeometryDescription describes particles in a CompoundMaterial independent of their relationship to each other or their orientation. It is distinguished from Fabric in that the ParticleGeometryDescription remains constant if the material is disaggregated into its constituent particles, whereas Fabric is lost if the material is disaggregated. Properties include the particle size (grainsize), particle sorting (size distribution, e.g., well sorted, poorly sorted, bimodal sorting), particle shape (surface rounding or crystal face development, e.g., well rounded, euhedral, anhedral), and particle aspect ratio (e.g., elongated, platy, bladed, compact, acicular).
-
-Figure: Start
 
 [[figure-42]]
 .ParticleGeometry context diagram.
@@ -1131,8 +1196,6 @@ The sourceOrganism property is an association between a ParticleGeometryDescript
 
 ===== ConstituentPart
 
-Figure: Start
-
 [[figure-43]]
 .ConstituentPart context diagram.
 image::images/figure-043.png[ConstituentPart context diagram.]
@@ -1159,8 +1222,6 @@ The FabricDescription data type describes all types of fabrics associated with a
 
 FabricDescription is distinguished from ParticleGeometry based on the criteria that particle geometry is preserved if a CompoundMaterial is disaggregated, while FabricDescription is not defined if the material is disaggregated.
 
-Figure: Start
-
 [[figure-44]]
 .Fabric description context diagram.
 image::images/figure-044.png[Fabric description context diagram.]
@@ -1173,8 +1234,6 @@ The fabricType:FabricTypeTerm property contains a term from a controlled vocabul
 
 An inorganic fluid is a non-crystalline EarthMaterial (solid, liquid, or gas) that tends to flow or conform to the shape of its container (examples: water, brine, glass).. By convention liquid mercury is considered a mineral. This class is an empty placeholder for extension at a later date, or by other domain models.
 
-Figure: Start
-
 [[figure-45]]
 .Inorganic fluid context diagram.
 image::images/figure-045.png[Inorganic fluid context diagram.]
@@ -1182,8 +1241,6 @@ image::images/figure-045.png[Inorganic fluid context diagram.]
 ===== MetamorphicDescription
 
 The data type MetamorphicDescription describes the character of metamorphism applied to a CompoundMaterial or GeologicUnit using one or more properties including estimated intensity (grade; e.g. high grade, low grade), characteristic metamorphic mineral assemblages (facies; e.g., greenschist, amphibolite), peak P-T estimates, and protolith material if known. A MetamorphicDescription provides a link to the GeologicEvent associated to the metamorphic event.
-
-Figure: Start
 
 [[figure-46]]
 .Metamorphic description context diagram.
@@ -1219,8 +1276,6 @@ The metamorphicEvent property is an association between a MetamorphicDescription
 
 OrganicMaterial is an EarthMaterial that belongs to the class of chemical compounds having a reduced carbon basis (as distinct from carbonates), and derived from living organisms. It includes high-carbon EarthMaterials such as bitumen, peat, and coal. This class is an empty placeholder for extension at a later date, or by other domain models.
 
-Figure: Start
-
 [[figure-47]]
 .Organic material context diagram.
 image::images/figure-047.png[Organic material context diagram.]
@@ -1228,8 +1283,6 @@ image::images/figure-047.png[Organic material context diagram.]
 ===== Organism
 
 Organism is a broad class to represent any living or once living things. This is the connection to taxonomy/biology for fossils. This class is an empty placeholder for extension at a later date, or by other domain models.
-
-Figure: Start
 
 [[figure-48]]
 .Organism context diagram.
@@ -1240,8 +1293,6 @@ image::images/figure-048.png[Organism context diagram.]
 PhysicalDescription is a class that describes the numeric physical properties of a geologic unit (GeologicUnit 8.4.1.3), earth material (EarthMaterial 8.4.1.6), or geologic structure (GeologicStructure 8.4.3.1). (e.g., density, porosity, magnetic susceptibility, remanent magnetism). These properties are modelled here as scalar numeric values (SWE::Quantity).
 
 Vector and tensor physical properties are considered to be more applicable to located observations and should be delivered as OM_Observations with associated geologic unit or geologic structure features. Since PhysicalProperty can be an arbitrary property, it satisfies the requirements of clause 7.2.2.8 or OGC 10-004r3 that states that “_The observed property shall be a phenomenon associated with the feature-of-interest._”, and hence any GeologicUnit, GeologicStructure are valid features of interest for any OM_Observation.
-
-Figure: Start
 
 [[figure-49]]
 .Physical description context diagram.
@@ -1259,8 +1310,6 @@ The propertyMeasure property (SWE::Quantity) is a scalar measurement of the phys
 
 RockMaterialDescription provides extended description of RockMaterial.
 
-Figure: Start
-
 [[figure-50]]
 .Rock material description context diagram.
 image::images/figure-050.png[Rock material description context diagram.]
@@ -1272,8 +1321,6 @@ The consolidationDegree property (SWE::Category) contains a term from a controll
 ==== GeologicAgeDetails
 
 GeologicEventDescription provides extended description of geologic events through links to GeochronologicEras in the GeologicTimescale model. GeoSciML Basic provides terms whereas GeoSciML Extension provides a fuller ontology to describe geochronology (see 8.6).
-
-Figure: Start
 
 [[figure-51]]
 .GeologicAgeDetails summary diagram.
@@ -1291,8 +1338,6 @@ The youngerGeochronologicEra property is an association between a GeologicEventD
 
 The Geologic Structure Details package provides for extended descriptions of geologic structures.
 
-Figure: Start
-
 [[figure-52]]
 .Summary diagram for GeologicStructureDetails.
 image::images/figure-052.png[Summary diagram for GeologicStructureDetails.]
@@ -1300,8 +1345,6 @@ image::images/figure-052.png[Summary diagram for GeologicStructureDetails.]
 ===== ContactDescription
 
 The ContactDescription provides extended descriptive properties of a geologic contact. If the contact type is ChronostratigraphicBoundary, it can be associated with a geochronologic (i.e., time zone) boundary that may correlate with it.
-
-Figure: Start
 
 [[figure-53]]
 .ContactDescription context diagram.
@@ -1319,11 +1362,16 @@ The orientation:GSML_PlanarOrientation property reports the general orientation 
 
 The correlatesWith property is an association between ContactDescription and a GeochronologicBoundary describing a geochronologic (i.e., time zone) boundary that may correlate with it. Therefore, a contact correlation with a GeochronologicBoundary SHALL ONLY be allowed when the contactType is a ChronostratigraphicBoundary.
 
+[[req_gsml4_extension_contact_chronoboundary]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-extension/contact-chronoboundary {set:cellbgcolor:#FFFFFF}
+2+|correlatesWith association to a GeochronologicBondary SHALL be allowed only when contactType = ChronostratigraphicBoundary. {set:cellbgcolor:#FFFFFF}
+|===
+
 ===== DisplacementEvent
 
 A displacement event is a description of the age, environment and process of a shear displacement event.
-
-Figure: Start
 
 [[figure-54]]
 .DisplacementEvent context diagram
@@ -1337,8 +1385,6 @@ The incrementalDisplacement:DisplacementValue property contains a DisplacementVa
 
 A planar foliation is defined by a tabular succession of layers > 5 mm thick. This definition is based on the proposed definition of gneiss by the NADM Science Language Technical Team [13]. The GeologicStructure characteristic of gneiss is layering.
 
-Figure: Start
-
 [[figure-55]]
 .Layering context diagram
 image::images/figure-055.png[Layering context diagram]
@@ -1350,8 +1396,6 @@ The layerComposition property is an association between a Layering and a RockMat
 ===== DisplacementValue
 
 A displacement value expresses the displacement on a fault with respect to a planar approximation of its shape.
-
-Figure: Start
 
 [[figure-56]]
 .Displacement value subtypes context diagram.
@@ -1397,6 +1441,13 @@ The slipComponent:SlipComponents property associates the individual slip compone
 
 SlipComponents is a kind of DisplacementValue that is a representation of slip as a vector resolved into components within a reference frame in which horizontal axes are parallel and perpendicular to the strike of the fault. At least one of heave, horizontalSlip, or throw must not be null.
 
+[[req_gsml4_extension_slipcomponents_slip]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-extension/slipComponents-slip {set:cellbgcolor:#FFFFFF}
+2+|SlipComponents SHALL have at least one of heave, horizontalSlip or throw be a non-null value. {set:cellbgcolor:#FFFFFF}
+|===
+
 ====== heave
 
 The property heave:GSML_Vector contains a component of slip in the horizontal, and perpendicular to the strike of the fault.
@@ -1412,8 +1463,6 @@ The property throw:GSML_Vector contains the vertical component of slip.
 ===== FoldDescription
 
 FoldDescription is an extended descriptive property of a fold structure.
-
-Figure: Start
 
 [[figure-57]]
 .FoldDescription context diagram.
@@ -1467,8 +1516,6 @@ The system property is an association between a FoldDescription and a FoldSystem
 
 A FoldSystem is a collection of congruent folds (axis and axial surface are parallel) produced by the same tectonic event. It is sometimes referred to as a “fold train”.
 
-Figure: Start
-
 [[figure-58]]
 .FoldSystem context diagram.
 image::images/figure-058.png[FoldSystem context diagram.]
@@ -1488,8 +1535,6 @@ The foldSystemMember is an association between a FoldSystem and the Folds that a
 ===== FoliationDescription
 
 FoliationDescription provides extended descriptive properties for a foliation structure.
-
-Figure: Start
 
 [[figure-59]]
 .FoliationDescription context diagram.
@@ -1523,8 +1568,6 @@ The spacing property (SWE::QuantityRange) contains a linear dimension representi
 
 ShearDisplacementStructureDescription provides extended descriptive properties of a shear displacement structure (i.e., fault or shear) defined in 8.4.3.5 by extending the abstract property block ShearDisplacementStructureAbstractDescription.
 
-Figure: Start
-
 [[figure-60]]
 .ShearDisplacementStructureDescription context diagram.
 image::images/figure-060.png[ShearDisplacementStructureDescription context diagram.]
@@ -1544,8 +1587,6 @@ The property stPhysicalProperty:PhysicalDescription contains a value of generic 
 ==== GeologicUnitDetails
 
 The GeologicUnitDetails package provides for extended description of geologic unit features (8.4.1.3).
-
-Figure: Start
 
 [[figure-61]]
 .GeologicUnitDetails
@@ -1659,13 +1700,9 @@ The start TimeOrdinalEraBoundary SHALL refer to the oldest boundary {set:cellbgc
 
 The Geologic Time package, developed by Simon Cox (CSIRO) and Steve Richard (Arizona Geological Survey) [1], contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the IUGS International Commission on Stratigraphy (ICS - http://www.stratigraphy.org/).
 
-Figure: Start
-
 [[figure-62]]
 .GeologicTime dependencies.
 image::images/figure-062.png[GeologicTime dependencies.]
-
-Figure: Start
 
 [[figure-63]]
 .Geologic Time summary diagram.
@@ -1675,8 +1712,6 @@ image::images/figure-063.png[Geologic Time summary diagram.]
 
 The GSSP model describes “Global Boundary Stratotype Sections and Points” as defined by the IUGS International Commission on Stratigraphy.
 
-Figure: Start
-
 [[figure-64]]
 .Global Boundary Stratotype Sections and Points.
 image::images/figure-064.png[Global Boundary Stratotype Sections and Points.]
@@ -1684,8 +1719,6 @@ image::images/figure-064.png[Global Boundary Stratotype Sections and Points.]
 ===== StratigraphicPoint
 
 A point in the stratigraphic record used to define a geochronologic boundary or point in geologic time.
-
-Figure: Start
 
 [[figure-65]]
 .Stratigraphic points context diagram
@@ -1711,8 +1744,6 @@ A type of stratigraphic point used to define a globally agreed point in geologic
 
 A sampled section of the stratigraphic record used to define a period in geologic time.
 
-Figure: Start
-
 [[figure-66]]
 .Stratigraphic sections context diagram.
 image::images/figure-066.png[Stratigraphic sections context diagram.]
@@ -1736,8 +1767,6 @@ The property conservation:Primitive::CharacterString contains a description of m
 ==== TemporalReferenceSystem
 
 This package is an extension of ISO19108 Temporal Schema and describes geologic eras and the relationships between them.
-
-Figure: Start
 
 [[figure-67]]
 .Temporal Reference System summary diagram.
@@ -1773,6 +1802,13 @@ By convention, the “start” of the TimeOrdinalEra is the oldest boundary beca
 
 The start property is an association to a TimeOrdinalEraBoundary that defines the start (the oldest) boundary of the era.
 
+[[req_gsml4_timescale_start]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-timescale/start {set:cellbgcolor:#FFFFFF}
+2+|The start TimeOrdinalEraBoundary SHALL refer to the oldest boundary {set:cellbgcolor:#FFFFFF}
+|===
+
 ====== end
 
 The end property is an association to a TimeOrdinalEraBoundary that defines the end (the youngest) boundary of the era.
@@ -1805,8 +1841,6 @@ The property observationalBasis is be an association between a TimeOrdinalEraBou
 
 The Timescale package describes geologic time periods (geochronologic eras) and the boundaries between them.
 
-Figure: Start
-
 [[figure-68]]
 .Time scale summary diagram.
 image::images/figure-068.png[Time scale summary diagram.]
@@ -1818,8 +1852,6 @@ The classic “Geologic Timescale” (http://www.stratigraphy.org/index.php/ics-
 ===== GeochronologicEra
 
 A GeochronologicEra is a period of time between two GeochronologicBoundaries. The association of a GeochronologicEra with a stratotype is optional. In the GSSP approach recommended by ICS for the Global Geologic Timescale, Unit Stratotypes are not used. Rather, the association of an era with geologic units and sections is indirect, via the association of an era with boundaries, which are in turn tied to stratotype points, which occur within host stratotype sections.
-
-Figure: Start
 
 [[figure-69]]
 .GeochronologicEra context diagram.
@@ -1837,8 +1869,6 @@ The property stratotype is an association between a GeochronologicEra and Strati
 
 A GeochronologicBoundary is a boundary between two geochronologic time periods.
 
-Figure: Start
-
 [[figure-70]]
 .GeochronologicBoundary context diagram.
 image::images/figure-070.png[GeochronologicBoundary context diagram.]
@@ -1849,8 +1879,6 @@ The property stratotype is an association between a GeochronologicBoundary and a
 
 Example:
 
-Figure: Start
-
 [[figure-71]]
 .Partial encoding of Miocene instance diagram.
 image::images/figure-071.png[Partial encoding of Miocene instance diagram.]
@@ -1858,8 +1886,6 @@ image::images/figure-071.png[Partial encoding of Miocene instance diagram.]
 ===== NumericEraBoundary
 
 NumericEraBoundary is used for pre-Ediacaran and Pleistocene / Holocene boundaries in the standard timescale where boundaries are not defined by a material reference but as numerical values.
-
-Figure: Start
 
 [[figure-72]]
 .NumericEraBoundary context diagram.
@@ -1913,6 +1939,8 @@ Interval SHALL be encoded with GM_LineString with two 1D points. {set:cellbgcolo
 Coordinate Reference System of interval geometries SHALL use the borehole geometry. {set:cellbgcolor:#FFFFFF}
 |*Requirement 7* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/borehole-position-null +
 If no GM_Point is available, an OGC nil value SHALL be used. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 1* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/borehole-3d +
+Implementers delivering 3-D origin locations SHOULD provide an elevation. {set:cellbgcolor:#FFFFFF}
 |*Requirement 8* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/borehole-elevation-dim +
 Origin elevation SHALL be a geometry with a dimension of 1. {set:cellbgcolor:#FFFFFF}
 |*Requirement 9* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/borehole-elevation-CRS +
@@ -1921,13 +1949,9 @@ Origin elevation srsName identifier SHALL be a vertical CRS having a EPSG in the
 
 The GeoSciML Borehole package contains an information model for boreholes and related artefacts. This is primarily through re-use of standard components from the Observations and Measurements (ISO19156).
 
-Figure: Start
-
 [[figure-73]]
 .Borehole dependency diagram.
 image::images/figure-073.png[Borehole dependency diagram.]
-
-Figure: Start
 
 [[figure-74]]
 .Borehole summary diagram.
@@ -1936,8 +1960,6 @@ image::images/figure-074.png[Borehole summary diagram.]
 ==== Borehole
 
 This requirements class describes Borehole and BoreholeInterval and related data types. This package describes a borehole as a means to sample geologic units underground and thus provide a linear map of the geology.
-
-Figure: Start
 
 [[figure-75]]
 .Borehole context diagram.
@@ -1974,8 +1996,6 @@ Borehole inherits sampledFeature from OM::SF_SamplingFeature, which links the sa
 
 DrillingDetails is a class that captures the description of drilling methods and hole diameters down the drilling path. Properties that apply to the Borehole as a whole are managed in BoreholeDetails (8.7.1.4).
 
-Figure: Start
-
 .Figure 76 : Drilling details
 image::images/figure-x75.png[Drilling details]
 
@@ -1991,6 +2011,13 @@ The boreholeDiameter property (SWE::Quantity) contains a measurement (a value an
 
 The intervalBegin property (SWE::Quantity) contains a measurement (a value and a unit of measurement) that corresponds to the measured distance of the start of the interval along the path of the borehole. The measured value must be less than or equal to the intervalEnd value.
 
+[[req_gsml4_borehole_value_intervalbegin]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/value-intervalBegin {set:cellbgcolor:#FFFFFF}
+2+|The value of intervalBegin SHALL be less or equal to the value of intervalEnd. {set:cellbgcolor:#FFFFFF}
+|===
+
 ====== intervalEnd
 
 The property intervalEnd (SWE::Quantity) contains a measurement (a value and a unit of measurement) of the measured distance of the end of the interval along the path of the borehole. The measured value must be greater than or equal to the intervalBegin value.
@@ -1999,13 +2026,25 @@ The property intervalEnd (SWE::Quantity) contains a measurement (a value and a u
 
 The property interval:GM_Object is a shape that is a 1-D interval (e.g., a “from” and “to”, or “top” and “base” measurements) that is equivalent (represents the same distance) as the one represented by intervalBegin and intervalEnd. The geometry shall use a reference to the borehole geometry as its CRS.
 
+[[req_gsml4_borehole_drill_interval_1d]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/drill-interval-1D {set:cellbgcolor:#FFFFFF}
+2+|Interval SHALL be encoded with GM_LineString with two 1D points. {set:cellbgcolor:#FFFFFF}
+|===
+
+[[req_gsml4_borehole_drill_interval_1d_crs]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/drill-interval-1D-CRS {set:cellbgcolor:#FFFFFF}
+2+|Coordinate Reference System shall be a reference to the borehole geometry. {set:cellbgcolor:#FFFFFF}
+|===
+
 Encoding of the drilled interval using GEO::GM_LineString shall consist of two 1D points only (the start and end point of the interval, measured as distance from the borehole collar), with a 1-D CRS referencing the borehole shape.
 
 ===== BoreholeInterval
 
 A BoreholeInterval is similar to a MappedFeature (8.4.1.2) whose shape is 1-D interval and uses the SRS of the containing borehole. The "mappedIntervalBegin" and "mappedIntervalEnd" properties are alternative to the 1D geometry to overcome problems with the delivery and ease of queryability of 1D GML shapes.
-
-Figure: Start
 
 [[figure-77]]
 .Borehole interval context diagram.
@@ -2022,6 +2061,13 @@ The specification property is an association between a BoreholeInterval and a GF
 ====== mappedIntervalBegin
 
 The property mappedIntervalBegin (SWE::Quantity) is a measurement (a value and a unit of measurement) corresponding to the measured distance of the start of the mapped interval along the path of the borehole. The measured value must be less than or equal to the mappedIntervalEnd value.
+
+[[req_gsml4_borehole_value_mappedintervalbegin]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/value-mappedIntervalBegin {set:cellbgcolor:#FFFFFF}
+2+|The value of mappedIntervalBegin SHALL be less than or equal to the value of mappedIntervalEnd. {set:cellbgcolor:#FFFFFF}
+|===
 
 ====== mappedIntervalEnd
 
@@ -2041,17 +2087,27 @@ The property shape:GM_Object is a 1-D interval (e.g., a “from” and “to”,
 
 Encoding of an interval within the borehole using GEO::GM_LineString shall consist of two 1D points only (the start and end point of the interval, measured as distance from the borehole collar), with CRS corresponding to the borehole shape.
 
-Instance example for Klčovo and Lastomir Formation adapted from Túnyi [18]:
+[[req_gsml4_borehole_interval_1d]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/interval-1D {set:cellbgcolor:#FFFFFF}
+2+|Interval SHALL be encoded with GM_LineString with two 1D points. {set:cellbgcolor:#FFFFFF}
+|===
 
-Figure: Start
+[[req_gsml4_borehole_interval_1d_crs]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/interval-1D-CRS {set:cellbgcolor:#FFFFFF}
+2+|Coordinate Reference System of interval geometries SHALL use the borehole geometry. {set:cellbgcolor:#FFFFFF}
+|===
+
+Instance example for Klčovo and Lastomir Formation adapted from Túnyi [18]:
 
 [[figure-78]]
 .Top part of Figure 2 from Túnyi [18]
 image::images/figure-078.png[Top part of Figure 2 from Túnyi [18]]
 
 Figure 79 shows an encoding of the first lithostratigraphic and magnetostratigraphic units from Figure 78 showing how the collection identifiers group BoreholeIntervals into two groups.
-
-Figure: Start
 
 [[figure-79]]
 .Encoding of a borehole with two distinct logs (collectionIdentifier).
@@ -2060,8 +2116,6 @@ image::images/figure-079.png[Encoding of a borehole with two distinct logs (coll
 ===== BoreholeDetails
 
 BoreholeDetails describes borehole-specific index data, often termed “header information”. It contains metadata about the parties involved in the drilling, the storage of drilled material and other information relevant to the borehole as a whole. Properties that may vary along the borehole path are managed in DrillingDetails (8.7.1.2).
-
-Figure: Start
 
 [[figure-80]]
 .Borehole details context diagram.
@@ -2107,8 +2161,6 @@ The property boreholeLength (SWE::Quantity) contains a measurement (a value and 
 
 A borehole OriginPosition is a feature corresponding to the start point of a borehole log. This may correspond to the borehole collar location (e.g., kelly bush).
 
-Figure: Start
-
 [[figure-81]]
 .Origin position context diagram.
 image::images/figure-081.png[Origin position context diagram.]
@@ -2121,13 +2173,41 @@ The property location contains a geometry corresponding to the location of the b
 
 If no GEO::GM_Point is available, an OGC nil value shall be used.
 
+[[req_gsml4_borehole_borehole_position_null]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/borehole-position-null {set:cellbgcolor:#FFFFFF}
+2+|If no GM_Point is available, an OGC nil value SHALL be used. {set:cellbgcolor:#FFFFFF}
+|===
+
 In situations where the origin position changes over the life of the borehole (e.g., due to subsidence or destruction of the original collar), the origin position should be updated to the new location.
 
 ====== elevation
 
 Implementers delivering 3-D origin locations should provide an elevation to improve interoperability.
 
+[[req_gsml4_borehole_borehole_3d]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/borehole-3d {set:cellbgcolor:#FFFFFF}
+2+|Implementers delivering 3-D origin locations SHOULD provide an elevation. {set:cellbgcolor:#FFFFFF}
+|===
+
 The elevation:DirectPosition property is a compromise approach to supply elevation explicitly for location; this is to allow for software that cannot process 3-D GM_Point. Null shall be used if elevation is unknown. A DirectPosition shall have a dimension of 1, and CRS will be a “vertical” CRS (e.g. EPSG CRSs in the range 5600-5799).
+
+[[req_gsml4_borehole_borehole_elevation_dim]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/borehole-elevation-dim {set:cellbgcolor:#FFFFFF}
+2+|Origin elevation SHALL be a geometry with a dimension of 1. {set:cellbgcolor:#FFFFFF}
+|===
+
+[[req_gsml4_borehole_borehole_elevation_crs]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-borehole/borehole-elevation-CRS {set:cellbgcolor:#FFFFFF}
+2+|Origin elevation srsName identifier SHALL be a vertical CRS having an EPSG in the range 5600-5799. {set:cellbgcolor:#FFFFFF}
+|===
 
 ==== GeoSciML Borehole vocabularies
 
@@ -2174,11 +2254,15 @@ OM::SF_SamplingFeature::sampledFeature SHALL not be an instance of OM::SF_Sampli
 For analytical error and detection limits, both DQ_QuantitativeAttributeAccuracy::nameOfMeasure and DQ_QuantitativeAttributeAccuracy::result SHALL NOT be null. {set:cellbgcolor:#FFFFFF}
 |*Requirement 3* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/accuracy-vocabulary +
 The value of DQ_Element:nameOfMeasure SHOULD be a term from a controlled vocabulary. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 1* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/image-url +
+The identifier of the image should be a HTTP URI referring to a representation of the image. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 2* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/image-process +
+The image om:procedure SHOULD make reference to a camera. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 3* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/outcrop-pattern +
+Observations at outcrop SHOULD be encoded using the pattern described at clause 8.8.5 {set:cellbgcolor:#FFFFFF}
 |===
 
 The LaboratoryAnalysis-Specimen application model extends the ISO19156 model for Observations, Measurements and Sampling. It specifically describes processes and results related to the analysis of (geological) samples using instruments, commonly in a laboratory environment. The design of this package is also informed by the MOLES v3 data model [21].
-
-Figure: Start
 
 [[figure-82]]
 .LaboratoryAnalysis and Specimen dependencies.
@@ -2192,25 +2276,42 @@ The LaboratoryAnalysis leaf package describes processes, instruments and result 
 
 The "sampledFeature" association links the OM::SF_SamplingFeature to the feature which the sampling feature was designed to sample. The target of this association shall not be a sampling feature. It is shall a real-world feature from an application domain.
 
+[[req_gsml4_lab_analysis_sampledfeature]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/sampledFeature {set:cellbgcolor:#FFFFFF}
+2+|OM::SF_SamplingFeature::sampledFeature SHALL not be an instance of OM::SF_SamplingFeature. {set:cellbgcolor:#FFFFFF}
+|===
+
 ===== OM_Observation::resultQuality
 
 OM::OM_Observation::resultQuality::DQ_QuantitativeAttributeAccuracy attribute shall be used to represent analytical errors and detection limits for each analytical measurement.
 
 At least "nameOfMeasure" and "result" shall be used when delivering om:resultQuality.
 
-Figure: Start
-
 [[figure-83]]
 .DQ_Element from ISO19115:2003.
 image::images/figure-083.png[DQ_Element from ISO19115:2003.]
 
+[[req_gsml4_lab_analysis_accuracy_measure]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/accuracy-measure {set:cellbgcolor:#FFFFFF}
+2+|For analytical error and detection limits, both DQ_QuantitativeAttributeAccuracy::nameOfMeasure and DQ_QuantitativeAttributeAccuracy::result SHALL NOT be null. {set:cellbgcolor:#FFFFFF}
+|===
+
 The CharacterString in "nameOfMeasure" should be a term from a controlled vocabulary.
+
+[[req_gsml4_lab_analysis_accuracy_vocabulary]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/accuracy-vocabulary {set:cellbgcolor:#FFFFFF}
+2+|The value of DQ_Element::nameOfMeasure SHOULD be a term from a controlled vocabulary. {set:cellbgcolor:#FFFFFF}
+|===
 
 ===== OM_Observation::parameter
 
 Analytical methods are very varied and a single model cannot capture all the intricacies of all methods used in geoscience. Communities that need to report specific parameters that are not covered by this specification can use NamedParameter.
-
-Figure: Start
 
 [[figure-84]]
 .Laboratory analysis summary diagram.
@@ -2219,8 +2320,6 @@ image::images/figure-084.png[Laboratory analysis summary diagram.]
 ===== AnalyticalInstrument
 
 The analytical instrument is the category of instrument used to perform an analytical measurement or observation.
-
-Figure: Start
 
 [[figure-85]]
 .Analytical instrument context diagram.
@@ -2254,8 +2353,6 @@ The property usedIn is an association between an AnalyticalInstrument and an Ana
 
 This feature type describes the time and operator of a particular laboratory analytical session. AnalyticalSession also has associated links to the type of instrument and analytical method used, processing steps applied to data collected during a session, and instrument parameters unique to that session.
 
-Figure: Start
-
 [[figure-86]]
 .Analytical session context diagram.
 image::images/figure-086.png[Analytical session context diagram.]
@@ -2284,8 +2381,6 @@ The property referenceAnalysis is an association between an AnalyticalSession an
 
 An analytical process is a concrete implementation of OM::OM_Process and describes the steps and methods used in an analytical session. It links to an analytical session (data acquisition) or a computational process which produce analytical results.
 
-Figure: Start
-
 [[figure-87]]
 .Analytical process
 image::images/figure-087.png[Analytical process]
@@ -2306,8 +2401,6 @@ The computation property is an association between an AnalyticalProcess and a CI
 
 The AnalyticalMethod provides the name, and published citation, of the analytical method used in an analytical session.
 
-Figure: Start
-
 [[figure-88]]
 .Analytical method
 image::images/figure-088.png[Analytical method]
@@ -2324,15 +2417,27 @@ The citation property is an association between an AnalyticalMethod and a CIT:CI
 
 The Image feature type is used to describe images of sampling features, for example, photographs of ion microprobe grain mounts.
 
-Figure: Start
-
 [[figure-89]]
 .Image
 image::images/figure-089.png[Image]
 
 When the image is available online, the identifier of the image, a HTTP URI, should point to one or more representation of that image.
 
+[[req_gsml4_lab_analysis_image_url]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/image-url {set:cellbgcolor:#FFFFFF}
+2+|The identifier of the image SHOULD be a HTTP URI referring to a representation of the image. {set:cellbgcolor:#FFFFFF}
+|===
+
 The samplingMethod (inherited from OM::SF_SamplingFeature) value for an image should be an identifier for a camera.
+
+[[req_gsml4_lab_analysis_image_process]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/image-process {set:cellbgcolor:#FFFFFF}
+2+|The image om:procedure SHOULD make reference to a camera. {set:cellbgcolor:#FFFFFF}
+|===
 
 ==== Geochronology
 
@@ -2344,8 +2449,6 @@ The Geochronology model allows the delivery of geochronological interpretations 
 
 Each member of the sampling collection has a related OM_Observation/result(s).
 
-Figure: Start
-
 [[figure-90]]
 .Summary diagram of geochronology.
 image::images/figure-090.png[Summary diagram of geochronology.]
@@ -2353,8 +2456,6 @@ image::images/figure-090.png[Summary diagram of geochronology.]
 ===== GeochronologicInterpretation
 
 A GeochronologicInterpretation is an interpretation made by a geologist of the age of a specimen made by statistical analysis of a collection of observations. A geologic specimen may have multiple geochronological interpretations made on it, each related to a different observation/result collection.
-
-Figure: Start
 
 [[figure-91]]
 .Geochronologic interpretation context diagram.
@@ -2402,8 +2503,6 @@ The property sourceCollection is an association between a GeochronologicInterpre
 
 The GeologicSpecimen package extends the ISO19156 O&M model, and describes processes relevant to the sampling, preparation, and analysis of geologic specimens.
 
-Figure: Start
-
 [[figure-92]]
 .Geologic specimen summary diagram.
 image::images/figure-092.png[Geologic specimen summary diagram.]
@@ -2413,8 +2512,6 @@ image::images/figure-092.png[Geologic specimen summary diagram.]
 A reference specimen is a specimen with known or accepted values of some property. The citation property describes the location of a published description of these values. Reference specimens include analytical blanks. ReferenceSpecimens are used in quality control procedures to assess method reproducibility.
 
 Analytical results from a reference specimen analysed during an AnalyticalSession are delivered in the same way as the results of other specimens analysed in that session.
-
-Figure: Start
 
 [[figure-93]]
 .Reference specimen context diagram.
@@ -2431,8 +2528,6 @@ The property usedIn is an association between a ReferenceSpecimen and an Analyti
 ===== GeologicSpecimenPreparation
 
 GeologicSpecimenPreparation is an extension of ISO Specimen::preparationStep to allow details of preparation steps to be delivered (e.g., filtration and mesh size, chemical additives, crushing methods, drying parameters, etc.).
-
-Figure: Start
 
 [[figure-94]]
 .Geologic specimen preparation context diagram.
@@ -2459,8 +2554,6 @@ Examples include:
 * channel sampling
 * sea floor dredging
 * outcrop sampling
-
-Figure: Start
 
 [[figure-95]]
 .Geologic sampling method
@@ -2510,13 +2603,18 @@ Vocabularies used in the LaboratoryAnalysis-Specimen package are listed Table 8:
 
 It is suggested to use SamplingFeatureCollection for representing geological field data collected at an outcrop, (i.e., an outcrop is modelled as a collection of sampling points). At each point at an outcrop, observations may be made on a single geologic feature (sampledFeature), such as a geologic unit description, a fault description, a contact description, or structural measurements on a foliation. If more than one geologic feature is observed at an outcrop, it is delivered as a separate sampling point.
 
-Figure: Start
-
 [[figure-96]]
 .Outcrop encoding pattern using ISO19156.
 image::images/figure-096.png[Outcrop encoding pattern using ISO19156.]
 
 SamplingFeatureCollection might also be used to represent dredge hauls, measured sections, and other sorts of sampling features with multiple kinds of associated observations.
+
+[[req_gsml4_lab_analysis_outcrop_pattern]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lab-analysis/outcrop-pattern {set:cellbgcolor:#FFFFFF}
+2+|Observations at outcrop SHOULD be encoded using the pattern described at clause 8.8.5 {set:cellbgcolor:#FFFFFF}
+|===
 
 === GeoSciML Lite Requirements Class (Normative)
 
@@ -2536,16 +2634,22 @@ SamplingFeatureCollection might also be used to represent dredge hauls, measured
 A dataset SHALL use a single geometry type (Point, Line, Polygon, etc.). {set:cellbgcolor:#FFFFFF}
 |*Requirement 2* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/string +
 Properties of type “CharacterString” SHALL contain human readable text. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 1* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/formal-syntax +
+Syntax of text in character string properties SHOULD be formalised. {set:cellbgcolor:#FFFFFF}
 |*Requirement 3* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/datetime +
 Calendar date and time SHALL be formatted according to ISO 8601. {set:cellbgcolor:#FFFFFF}
 |*Requirement 4* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/uri +
 Properties which name end with “_uri” SHALL contain a string conformant to URI format as specified in RFC 3986. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 2* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/resolvable-uri +
+Properties containing a valid URI SHOULD be dereferenceable. {set:cellbgcolor:#FFFFFF}
 |*Requirement 5* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/user-defined +
 Features delivered with user defined properties SHALL be conformant to GML Simple Feature Level 0. {set:cellbgcolor:#FFFFFF}
 |*Requirement 6* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/identifier-unique +
 Identifiers SHALL be unique to a dataset. {set:cellbgcolor:#FFFFFF}
 |*Requirement 7* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/identifier-uri +
 Identifiers SHALL be formatted as URI according to RFC 3986. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 3* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-identifier +
+Where possible, GeologicUnitView identifier SHOULD correspond to an instance of GeoSciML MappedFeature. {set:cellbgcolor:#FFFFFF}
 |*Requirement 8* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-representativeLithology +
 representativeLithology_uri value SHALL refer to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit. {set:cellbgcolor:#FFFFFF}
 |*Requirement 9* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-representativeAge +
@@ -2554,8 +2658,24 @@ representativeAge_uri value SHALL refer to a controlled concept specifying the m
 representativeOlderAge_uri value SHALL refer to a controlled concept specifying the most representative older value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history. {set:cellbgcolor:#FFFFFF}
 |*Requirement 11* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-representativeYoungerAge +
 representativeYoungerAge_uri value SHALL refer to a controlled concept specifying the most representative younger value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 4* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-specification +
+specification_uri value SHOULD refer the GeoSciML GeologicUnit feature that describes the instance in detail. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 5* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/boreholeview-identifier +
+identifier SHOULD resolve to a representation of a GeoSciML Borehole. {set:cellbgcolor:#FFFFFF}
 |*Requirement 12* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/boreholeview-elevation-crs +
 If present, elevation_srs SHALL resolve to a valid EPSG vertical datum in the range EPSG:5600 to EPSG:5799 {set:cellbgcolor:#FFFFFF}
+|*Recommendation 6* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/boreholeview-parentBorehole-uri +
+If present, parentBorehole_uri SHOULD resolve to a representation of a GeoSciML borehole. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 7* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/contactview-identifier +
+identifier SHOULD correspond to an instance of GeoSciML MappedFeature. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 8* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicspecimenview-identifier +
+identifier SHOULD correspond to an instance of GeoSciML GeologicSpecimen. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 9* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geomorphologicunitview-identifier +
+identifier SHOULD correspond to a representation of GeoSciML MappedFeature. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 10* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/sheardisplacemenstructureview-identifier +
+identifier SHOULD correspond to a representation of GeoSciML MappedFeature. {set:cellbgcolor:#FFFFFF}
+|*Recommendation 11* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/siteobservationview-identifier +
+identifier SHOULD correspond to a representation of OM::OM_Observation. {set:cellbgcolor:#FFFFFF}
 |*Requirement 13* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/siteobservationview-symbolRotation +
 If present, the symbolRotation SHALL be a value in the range [0,360[. {set:cellbgcolor:#FFFFFF}
 |===
@@ -2565,8 +2685,6 @@ GeoSciML Lite is a simplification of parts of GeoSciML and Observations and Meas
 Use of standard vocabularies enables map display using a shared legend (symbolization scheme) to achieve visual harmonization of maps provided by different services. In addition, the GeoSciML Lite data structure includes text fields with information for human users browsing a geologic map, a link to a full GeoSciML feature element if available, and a symbol identifier field to enable a user-defined symbolization scheme in each map service.
 
 By linking the simple feature WMS with a GeoSciML WFS, clients can acquire geologic feature descriptions that can be used in web-mapping applications to construct custom legends. Linking to full GeoSciML features allows the Lite schema to be used in a map browsing and query interface to identify and select features for further processing that can be acquired as highly structured, information-rich GML features.
-
-Figure: Start
 
 [[figure-97]]
 .Package dependency for GeoSciML Lite.
@@ -2593,8 +2711,6 @@ Properties ending with “_uri” shall not have concatenated values. Those prop
 For each GeoSciML Lite view, a table provides the mapping between Lite and GeoSciML properties. The mapping is expressed in OCL syntax as a path from the base type of the view to the property where the value resides in GeoSciML.
 
 For example:
-
-Figure: Start
 
 [[figure-98]]
 .Mapping of key GeologicUnitView properties to GeoSciML
@@ -2634,17 +2750,45 @@ In such cases, guidance will be provided.
 
 ===== Geometry type
 
+[[req_gsml4_lite_geomtype]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geomtype {set:cellbgcolor:#FFFFFF}
+2+|A dataset SHALL use a single geometry type (Point, Line, Polygon, etc.). {set:cellbgcolor:#FFFFFF}
+|===
+
 A dataset (for example, a GML document or a GeoJSON instance or an ESRI shapefile) SHALL use a single geometry type. Most GIS applications and software which render a dataset containing geometry do not expect mixed geometries.
 
 ===== String properties
+
+[[req_gsml4_lite_string]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/string {set:cellbgcolor:#FFFFFF}
+2+|Properties of type “CharacterString” SHALL contain human readable text. {set:cellbgcolor:#FFFFFF}
+|===
 
 String properties SHALL provide information easily readable by human. The intent of string field is to display, not to query. The string properties can be translated according to the language of the user as needed while URI properties should not.
 
 ===== Formal Syntax
 
+[[req_gsml4_lite_formal_syntax]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/formal-syntax {set:cellbgcolor:#FFFFFF}
+2+|Syntax of text in character string properties SHOULD be formalised. {set:cellbgcolor:#FFFFFF}
+|===
+
 Some string properties can be constructed using formal syntax, such as comma delimited list or any other text based structure (JSON for example). Where possible, this syntax SHOULD be formalised in a profile of this specification.
 
 ===== Date and Time formatting
+
+[[req_gsml4_lite_datetime]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/datetime {set:cellbgcolor:#FFFFFF}
+2+|Calendar date and time SHALL be formatted according to ISO 8601. {set:cellbgcolor:#FFFFFF}
+|===
 
 All dates and times, excluding geological ages, shall be formatted using ISO 8601 format (YYYY-MM-DD). When a time must be specified, time zone shall be provided.
 
@@ -2658,11 +2802,23 @@ Examples:
 
 Properties which names end with “_uri” shall contain a *single* absolute URI conformant to RFC 3986.
 
+[[req_gsml4_lite_uri]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/uri {set:cellbgcolor:#FFFFFF}
+2+|Properties which name end with “_uri” SHALL contain a string conformant to URI format as specified in RFC 3986. {set:cellbgcolor:#FFFFFF}
+|===
+
 Properties containing a URI should, unless stated otherwise, resolve following Linked Open Data principles.
 
-Although many vocabulary terms are defined as URI, not all URIs are actually supported by a formal Linked Open Data infrastructure. URIs are just a convenient mechanism to build unique vocabulary identifiers. Note that in some situations, some “_uri” properties might require that the URI SHALL resolve to some valid content. Those cases will be explicitly stated. Some community might create a profile of this requirements class and add more constraints, such as mandatory resolution of the URI to one or more resources and impose mandatory mime-types (GeoSciML/XML or GeoSciML/GeoJSON).
+[[req_gsml4_lite_resolvable_uri]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/resolvable-uri {set:cellbgcolor:#FFFFFF}
+2+|Properties containing a valid URI SHOULD be dereferenceable. {set:cellbgcolor:#FFFFFF}
+|===
 
-Figure: Start
+Although many vocabulary terms are defined as URI, not all URIs are actually supported by a formal Linked Open Data infrastructure. URIs are just a convenient mechanism to build unique vocabulary identifiers. Note that in some situations, some “_uri” properties might require that the URI SHALL resolve to some valid content. Those cases will be explicitly stated. Some community might create a profile of this requirements class and add more constraints, such as mandatory resolution of the URI to one or more resources and impose mandatory mime-types (GeoSciML/XML or GeoSciML/GeoJSON).
 
 [[figure-99]]
 .GeoSciML Lite feature types.
@@ -2672,17 +2828,36 @@ Figure 99 shows the seven Lite feature types specified by GeoSciML 4.1. Each fea
 
 ===== User defined properties
 
+[[req_gsml4_lite_user_defined]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/user-defined {set:cellbgcolor:#FFFFFF}
+2+|Features delivered with user defined properties SHALL be conformant to GML Simple Feature Level 0. {set:cellbgcolor:#FFFFFF}
+|===
+
 New properties added by the data provider shall keep the feature conformant to GML Simple Feature Level 0. For example, no duplicate property names, nor extra geometry properties.
 
 ===== identifier
 
 Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset.
 
+[[req_gsml4_lite_identifier_unique]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/identifier-unique {set:cellbgcolor:#FFFFFF}
+2+|Identifier SHALL be unique to a dataset. {set:cellbgcolor:#FFFFFF}
+|===
+
 Identifiers shall be formatted as URI according to RFC 3986. This URI could be used to access more detailed, such as a GeoSciML Basic, representation of the feature.
 
-==== GeologicUnitView
+[[req_gsml4_lite_identifier_uri]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/identifier-URI {set:cellbgcolor:#FFFFFF}
+2+|Identifiers SHALL be formatted as URI according to RFC 3986. {set:cellbgcolor:#FFFFFF}
+|===
 
-Figure: Start
+==== GeologicUnitView
 
 [[figure-100]]
 .GeologicUnitView feature type.
@@ -2769,6 +2944,13 @@ GeologicUnitView is a simplified view of a GeoSciML MappedFeature feature with k
 
 The identifier should have the same value as the corresponding GeoSciML MappedFeature identifier, if available.
 
+[[req_gsml4_lite_geologicunitview_identifier]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-identifier {set:cellbgcolor:#FFFFFF}
+2+|Where possible, GeologicUnitView identifier SHOULD correspond to an instance of MappedFeature. {set:cellbgcolor:#FFFFFF}
+|===
+
 ===== name
 
 If present, the property name:Primitive::CharacterString is a display name for the GeologicUnit.
@@ -2821,21 +3003,56 @@ The property geologicUnitType_uri:Primitive::CharacterString contains a URI refe
 
 The property representativeLithology_uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit.
 
+[[req_gsml4_lite_geologicunitview_representativelithology]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-representativeLithology {set:cellbgcolor:#FFFFFF}
+2+|representativeLithology_uri value SHALL refer to a controlled concept specifying the characteristic or representative lithology of the unit. This may be a concept that defines the super-type of all lithology values present within a GeologicUnit or a concept defining the lithology of the dominant CompositionPart (as defined in GeoSciML) of the unit. {set:cellbgcolor:#FFFFFF}
+|===
+
 ===== representativeAge_uri
 
 The property representativeAge_uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the most representative stratigraphic age interval for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature’s geological history or a value summarising the all or part of the feature’s history.
+
+[[req_gsml4_lite_geologicunitview_representativeage]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-representativeAge {set:cellbgcolor:#FFFFFF}
+2+|representativeAge_uri value SHALL refer to a controlled concept specifying the most representative stratigraphic age interval for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history. {set:cellbgcolor:#FFFFFF}
+|===
 
 ===== representativeOlderAge_uri
 
 The property representativeOlderAge_uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the most representative older value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature’s geological history or a value summarising the all or part of the feature’s history.
 
+[[req_gsml4_lite_geologicunitview_representativeolderage]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-representativeOlderAge {set:cellbgcolor:#FFFFFF}
+2+|representativeOlderAge_uri value SHALL refer to a controlled concept specifying the most representative older value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history. {set:cellbgcolor:#FFFFFF}
+|===
+
 ===== representativeYoungerAge_uri
 
 The property representativeYoungerAge_uri:Primitive::CharacterString shall contain a URI referring to a controlled concept specifying the most representative younger value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature’s geological history or a value summarising the all or part of the feature’s history.
 
+[[req_gsml4_lite_geologicunitview_representativeyoungerage]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-representativeYoungerAge {set:cellbgcolor:#FFFFFF}
+2+|representativeYoungerAge_uri value SHALL refer to a controlled concept specifying the most representative younger value in a range of stratigraphic age intervals for the GeologicUnit. This will be defined entirely at the discretion of the data provider and may be a single event selected from the geologic feature's geological history or a value summarising the all or part of the feature's history. {set:cellbgcolor:#FFFFFF}
+|===
+
 ===== specification_uri
 
 If present, the property specification_uri:Primitive::CharacterString shall contain a URI referring the GeoSciML GeologicUnit feature that describes the instance in detail.
+
+[[req_gsml4_lite_geologicunitview_specification]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicunitview-specification {set:cellbgcolor:#FFFFFF}
+2+|specification_uri value SHOULD refer the GeoSciML GeologicUnit feature that describes the instance in detail. {set:cellbgcolor:#FFFFFF}
+|===
 
 ===== metadata_uri
 
@@ -2856,8 +3073,6 @@ A data provider may add an arbitrary number of extra properties, as long as the 
 ==== BoreholeView
 
 BoreholeView is a simplified view of a GeoSciML Borehole. In GeoSciML terms, this will be an instance of a Borehole feature with key property values summarised as labels (unconstrained character strings) or arbitrarily selected classifiers to be used for thematic mapping purposes. The latter are the properties suffixed with “_uri” and will contain URIs referring to controlled concepts in published vocabularies.
-
-Figure: Start
 
 [[figure-101]]
 .BoreholeView feature type.
@@ -2945,6 +3160,13 @@ image::images/figure-101.png[BoreholeView feature type.]
 
 The identifier:Primitive::CharacterString property shall contain a unique identifier for this borehole and be should formatted as an absolute URI conformant to RFC 3986.
 
+[[req_gsml4_lite_boreholeview_identifier]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/boreholeview-identifier {set:cellbgcolor:#FFFFFF}
+2+|identifier SHOULD resolve to a representation of a GeoSciML Borehole. {set:cellbgcolor:#FFFFFF}
+|===
+
 ===== name
 
 If present, the property name:Primitive::CharacterString contains a human-readable display name for the borehole.
@@ -3005,6 +3227,13 @@ If present, the property elevation_m:Primitive::Number reports the elevation dat
 
 If present, the property elevation_srs:Primitive::CharacterString is a URI of a spatial reference system of the elevation value. (e.g., mean sea level). Mandatory if elevation_m is populated. The SRS shall be a one dimensional vertical SRS (i.e., EPSG code in the range 5600-5799).
 
+[[req_gsml4_lite_boreholeview_elevation_crs]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/boreholeview-elevation-crs {set:cellbgcolor:#FFFFFF}
+2+|If present, elevation_srs SHALL resolve to a valid EPSG vertical datum in the range EPSG:5600 to EPSG:5799 {set:cellbgcolor:#FFFFFF}
+|===
+
 Example: https://epsg.io/5711.gml
 
 ===== positionalAccuracy
@@ -3018,6 +3247,13 @@ If present, the source:Primitive::CharacterString property describes details and
 ===== parentBorehole_uri
 
 When present, the parentBorehole_uri:Primitive::CharacterString contains a URI referring to one or more representations of a parent borehole (e.g., a parent well of a sidetrack wellbore).
+
+[[req_gsml4_lite_boreholeview_parentborehole_uri]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/boreholeview-parentBorehole-uri {set:cellbgcolor:#FFFFFF}
+2+|If present, parentBorehole_uri SHOULD resolve to a representation of a GeoSciML borehole. {set:cellbgcolor:#FFFFFF}
+|===
 
 If the borehole does not have any parent, this field shall be empty.
 
@@ -3038,8 +3274,6 @@ The property shape:GM_Object contains a Geometry defining the extent of the bore
 A data provider may add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
 
 ==== ContactView
-
-Figure: Start
 
 [[figure-102]]
 .ContactView feature type.
@@ -3099,6 +3333,13 @@ ContactView is a simplified view of a GeoSciML MappedFeature with key property v
 
 Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
 
+[[req_gsml4_lite_contactview_identifier]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/contactview-identifier {set:cellbgcolor:#FFFFFF}
+2+|identifier SHOULD correspond to an instance of MappedFeature. {set:cellbgcolor:#FFFFFF}
+|===
+
 It should have the same value as the corresponding GeoSciML MappedFeature identifier if available.
 
 ===== name
@@ -3150,8 +3391,6 @@ The property shape:GM_Object contains a geometry defining the extent of the cont
 A data provider can add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
 
 ==== GeologicSpecimenView
-
-Figure: Start
 
 [[figure-103]]
 .GeologicSpecimenView feature type.
@@ -3219,6 +3458,13 @@ GeologicSpecimenView is a simplified view of a point-located specimen from GeoSc
 ===== identifier
 
 Globally unique identifier:Primitive::CharacterString uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
+
+[[req_gsml4_lite_geologicspecimenview_identifier]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geologicspecimenview-identifier {set:cellbgcolor:#FFFFFF}
+2+|identifier SHOULD correspond to an instance of GeoSciML GeologicSpecimen. {set:cellbgcolor:#FFFFFF}
+|===
 
 If present, the URI should resolve to a representation that corresponds to an instance of GeoSciML GeologicSpecimen.
 
@@ -3288,8 +3534,6 @@ The property shape:GM_Object contains a geometry of the specimen (generally a po
 A data provider can add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
 
 ==== GeomorphologicUnitView
-
-Figure: Start
 
 [[figure-104]]
 .GeomorphologicUnitView feature type.
@@ -3375,6 +3619,13 @@ GeomorphologicUnitView is a simplified view of a GeoSciML GeomorphologicUnit. In
 ===== identifier
 
 Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
+
+[[req_gsml4_lite_geomorphologicunitview_identifier]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/geomorphologicunitview-identifier {set:cellbgcolor:#FFFFFF}
+2+|identifier SHOULD correspond to a representation of GeoSciML MappedFeature. {set:cellbgcolor:#FFFFFF}
+|===
 
 If present, the URI should resolve to a representation that corresponds to an instance of GeoSciML MappedFeature.
 
@@ -3463,8 +3714,6 @@ The property shape:GM_Object contains a geometry defining the extent of the feat
 A data provider can add an arbitrary number of extra properties, as long as the instance is conformant to GML Simple Feature Level 0.
 
 ==== ShearDisplacementStructureView
-
-Figure: Start
 
 [[figure-105]]
 .ShearDisplacementStructureView feature type.
@@ -3556,6 +3805,13 @@ ShearDisplacementStructureView is a simplified view of a GeoSciML ShearDisplacem
 ===== identifier
 
 Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
+
+[[req_gsml4_lite_sheardisplacemenstructureview_identifier]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/sheardisplacemenstructureview-identifier {set:cellbgcolor:#FFFFFF}
+2+|identifier SHOULD correspond to a representation of GeoSciML MappedFeature. {set:cellbgcolor:#FFFFFF}
+|===
 
 It should have the same value as the corresponding GeoSciML MappedFeature identifier if available.
 
@@ -3653,8 +3909,6 @@ A data provider can add an arbitrary number of extra properties, as long as the 
 
 ==== SiteObservationView
 
-Figure: Start
-
 [[figure-106]]
 .SiteObservationView feature type.
 image::images/figure-106.png[SiteObservationView feature type.]
@@ -3731,6 +3985,13 @@ SiteObservationView is a simplified view of a generally point-located geological
 
 Globally unique identifier:Primitive::CharacterString shall uniquely identifies a tuple within the dataset and be formatted as an absolute URI conformant to RFC 3986.
 
+[[req_gsml4_lite_siteobservationview_identifier]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/siteobservationview-identifier {set:cellbgcolor:#FFFFFF}
+2+|identifier SHOULD correspond to a representation of OM::OM_Observation . {set:cellbgcolor:#FFFFFF}
+|===
+
 The URI should resolve to an instance of OM_Observation.
 
 ===== siteName
@@ -3798,6 +4059,13 @@ If present, the property genericSymbolizer:Primitive::CharacterString contains a
 ===== symbolRotation
 
 If present, the symbolRotation:Integer property contains an integer value between 0 and 359 to specify rotation of symbol at this location, e.g. rotation of a geologic strike and dip symbol to reflect the strike azimuth. The angular convention shall be geographic angle (clockwise with 0 at geographic north pole, therefore 90 degree is east).
+
+[[req_gsml4_lite_siteobservationview_symbolrotation]]
+[cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4-lite/siteobservationview-symbolRotation {set:cellbgcolor:#FFFFFF}
+2+|If present, the symbolRotation SHALL be a value in the range [0,360[. {set:cellbgcolor:#FFFFFF}
+|===
 
 ===== shape
 

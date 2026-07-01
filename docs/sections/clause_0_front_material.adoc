@@ -33,12 +33,19 @@ No security considerations have been made for this Standard.
 The Submitting Organizations clause is generated automatically by Metanorma from
 the :submitting-organizations: document attribute set in document.adoc:
 
-* International Union of Geological Sciences — Commission for the Management and
-  Application of Geoscience Information (IUGS CGI)
-* British Geological Survey (NERC-BGS)
-* Bureau de Recherches Géologiques et Minières (BRGM)
-* Commonwealth Scientific and Industrial Research Organisation (CSIRO)
-* U.S. Geological Survey (USGS)
+* Arizona Geological Survey (AzGS), Arizona, USA
+* British Geological Survey (NERC-BGS), UK
+* Bureau de Recherches Géologiques et Minières (BRGM), France
+* Commonwealth Scientific and Industrial Research Organisation (CSIRO), Australia
+* Geological Survey of Victoria (GSV), Australia
+* Geological Survey of Finland (GTK), Finland
+* Geological Survey of Italy (ISPRA), Italy
+* Geological Survey of Sweden (SGU), Sweden
+* Geoscience Australia (GA), Australia
+* Institute of Geological and Nuclear Sciences (GNS), New Zealand
+* Landcare Research, New Zealand
+* Natural Resources Canada (NRCan), Canada
+* U.S. Geological Survey (USGS), United States of America
 ////
 
 [.preface]

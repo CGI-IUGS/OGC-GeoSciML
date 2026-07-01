@@ -109,6 +109,98 @@ Remaining messages are non-fatal and expected for a faithful first conversion:
   and enriched from the Relaton repositories during the build, so CI needs
   network access (the GitHub Actions runner has it).
 
+== Second build (HTML + PDF produced) — reviewed
+
+The second build completed and produced `document.html` and `document.pdf`. A
+review of its log and a content comparison against the original published HTML
+led to the following corrections:
+
+* *Removed 107 stray “Figure: Start” lines.* The source wraps each figure in an
+  HTML comment (`<!-- Figure: Start -->`); the converter was emitting the
+  comment text as a visible paragraph before every figure. Comments are now
+  ignored.
+* *Restored dropped recommendations and inline requirement boxes.* Two gaps were
+  found and fixed:
+  ** Requirements-class tables can contain *Recommendation* rows (for example
+     `/req/gsml4xsd/iso8601-time`) as well as *Requirement* rows; only the
+     requirement rows were being captured, so the recommendations were dropped.
+     Both are now included.
+  ** The 86 individual requirement/recommendation boxes that appear inline in
+     the prose (in addition to the class-summary tables) were previously skipped
+     as “duplicates”. The published standard shows both, and several of these
+     boxes carry statements not present in any summary table, so they are now
+     rendered inline as well.
+  After these fixes a paragraph-level comparison against the original finds no
+  missing normative content (the only unmatched source strings are an
+  illustrative `[reference to clause(s) containing tests]` template placeholder
+  and a handful of front-matter sentences that were deliberately reworded to
+  Metanorma conventions).
+* *Term origins no longer use `[.source]`.* A Metanorma term source must be a
+  bibliography cross-reference; the bracketed origin citations (for example
+  `[ISO 19156, definition 4.4]`) are now shown inline at the end of the
+  definition, exactly as the published standard presents them.
+* *References clause preamble* is left to Metanorma. A `[bibliography]` section
+  may not contain paragraphs, so the source's introductory sentence was removed;
+  Metanorma emits the standard normative-references boilerplate automatically.
+* *Annex A is marked normative.* It now renders as “Annex A (normative)
+  Conformance classes”; Annexes B and C remain informative.
+
+The comparison also confirmed full structural fidelity: all 555 source headings
+are present (Metanorma renders three under its own titles — “Normative
+references”, and the Annex A/B labels), all 107 figures, all 17 requirements
+classes and 17 conformance classes, all 15 terms, and all references.
+
+Still-open, non-fatal items (unchanged): the “Hanging paragraph” style warnings,
+the Relaton “no recognised prefix” notes on informative references, a few
+image-sizing notes emitted by Metanorma itself, and `stage` warnings that
+originate in *fetched* external reference metadata (not this document).
+
+== Front-matter and boilerplate corrections
+
+A review against the original front matter identified several metadata
+discrepancies, now addressed in `document.adoc`:
+
+* *Submitting organizations — all 13 restored.* An earlier draft listed only
+  five and incorrectly included IUGS CGI (which is a copyright holder, not a
+  submitter). The `:submitting-organizations:` attribute now lists the full set:
+  AzGS, BGS, BRGM, CSIRO, GSV, GTK, ISPRA, SGU, Geoscience Australia, GNS,
+  Landcare Research, NRCan and USGS.
+* *Copyright holder — IUGS CGI added.* `:copyright-holder:` now names both the
+  Open Geospatial Consortium and the IUGS Commission for the Management and
+  Application of Geoscience Information, matching the original joint copyright.
+* *Copyright year — set to 2017.* `:copyright-year: 2017` replaces the build
+  year that Metanorma was otherwise defaulting to. (The original states a
+  “2016–2017” range; Metanorma records a single copyright year, and 2017 is the
+  publication year.)
+* *Lists of figures and tables restored.* `:toc-figures:` and `:toc-tables:`
+  now generate a Table of Figures and a Table of Tables alongside the main Table
+  of Contents.
+
+Two related items are deliberately left as-is; they are judgement calls, not
+oversights:
+
+* *Table of Requirements.* Metanorma's `:toc-requirements:` only lists native
+  `[requirement]` model blocks. Because the requirements and conformance classes
+  are rendered here as OGC-styled *tables* (see the conversion-decision section
+  above), they instead appear in the *Table of Tables* under their class names
+  (“GeoSciML Core Abstract”, etc.), which serves the same navigation purpose. A
+  dedicated Table of Requirements would require migrating those tables to native
+  requirement blocks. `:toc-requirements:` was therefore not enabled (it would
+  otherwise emit an empty list).
+* *License Agreement text.* The original embeds the full multi-paragraph OGC
+  software licence. Current OGC Metanorma documents instead carry the short
+  copyright notice plus a link to `https://www.ogc.org/legal`, which Metanorma's
+  OGC flavour generates automatically and which reflects OGC's *current* legal
+  terms. Reproducing the 2016 licence verbatim in a fresh republication would be
+  less appropriate than using the current boilerplate, so it is left to the
+  flavour. If strict byte-fidelity to the 2016 document is required, the full
+  text can be reinstated with a `[license-statement]` boilerplate override.
+
+NOTE: `:copyright-holder:` populates the copyright owners in the document
+metadata; confirm on the next build that the OGC flavour surfaces IUGS CGI in the
+rendered copyright notice. If the flavour's notice is hard-coded to OGC alone, a
+`[copyright-statement]` boilerplate override is the fallback.
+
 == To verify on the first CI build
 
 . Build with the OGC Metanorma pipeline (`metanorma compile document.adoc`, or

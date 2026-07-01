@@ -1,5 +1,5 @@
-[appendix]
-== Conformance classes (Normative)
+[appendix,obligation="normative"]
+== Conformance classes
 
 .GeoSciML Conceptual
 [[conf_gsml4_conceptual]]
