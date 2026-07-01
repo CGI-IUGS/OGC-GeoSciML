@@ -16,14 +16,16 @@ source instead of the legacy hand-produced HTML.
 == Building
 
 The whole document builds with a single command using the official Metanorma
-docker image (no local Ruby/gem install required):
+docker image (no local Ruby/gem install required). Run these from *this*
+`docs/` directory:
 
 [source,sh]
 ----
-docker run -v "$(pwd)":/metanorma metanorma/mn metanorma compile document.adoc
+docker run --rm -v "$(pwd)":/metanorma metanorma/metanorma metanorma compile document.adoc
 ----
 
-or, if Metanorma is installed locally:
+or, if Metanorma is installed locally (for example in WSL — see the repository
+`README.MD`):
 
 [source,sh]
 ----
@@ -33,13 +35,17 @@ metanorma compile document.adoc
 This produces `document.html`, `document.xml` (Metanorma semantic XML), and,
 when fonts are available, `document.pdf` and `document.doc`.
 
-A multi-document *site* build (used by the GitLab CI in `.gitlab-ci.yml`) is also
+A multi-document *site* build (what the CI publishes to GitHub Pages) is
 configured through the site manifest in `metanorma.yml`:
 
 [source,sh]
 ----
-metanorma site generate . --output-dir public
+metanorma site generate --output-dir public --agree-to-terms .
 ----
+
+The repository `README.MD` has step-by-step local-build instructions for both
+the Docker image and a native WSL/Ubuntu install, plus notes on the GitHub
+Actions workflow that builds and publishes this document.
 
 == Layout
 
