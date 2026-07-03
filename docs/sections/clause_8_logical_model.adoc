@@ -661,7 +661,7 @@ A geomorphologic feature is a kind of GeologicFeature describing the shape and n
 .Partial encoding of landform located in Elba Island as part of a geomorphological unit (encoded from a map from D’Orefice et al, 2009)
 image::images/figure-023.png[Partial encoding of landform located in Elba Island as part of a geomorphological unit (encoded from a map from D’Orefic]
 
-Figure 23 shows an example of GeoSciML encoding of a landform lava cone geomorphologic unit (from [2]) located in Elba Island showing how the geomorphologic feature is related to the geologic unit and materials that it is made of.
+Figure 23 shows an example of GeoSciML encoding of a landform lava cone geomorphologic unit (from <<ref2>>) located in Elba Island showing how the geomorphologic feature is related to the geologic unit and materials that it is made of.
 
 ====== unitDescription
 
@@ -1698,7 +1698,7 @@ Vocabularies used in GeoSciML Extension are listed in Table 5 - GeoSciML Extensi
 The start TimeOrdinalEraBoundary SHALL refer to the oldest boundary {set:cellbgcolor:#FFFFFF}
 |===
 
-The Geologic Time package, developed by Simon Cox (CSIRO) and Steve Richard (Arizona Geological Survey) [1], contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the IUGS International Commission on Stratigraphy (ICS - http://www.stratigraphy.org/).
+The Geologic Time package, developed by Simon Cox (CSIRO) and Steve Richard (Arizona Geological Survey) <<ref1>>, contains elements used to describe the classification of geologic time: time periods, time boundaries, and the relationships between them as defined by the IUGS International Commission on Stratigraphy (ICS - http://www.stratigraphy.org/).
 
 [[figure-62]]
 .GeologicTime dependencies.
