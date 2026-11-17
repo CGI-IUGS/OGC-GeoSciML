@@ -57,7 +57,6 @@ The following shortcuts are used to refer to external (non GeoSciML) classifiers
 
 === GeoSciML Core Abstract Requirements Class (Normative)
 
-.GeoSciML Core Abstract Requirements Class
 [[req_gsml4_core]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -174,7 +173,6 @@ This requirement does not require that URIs be actually dereferenceable, but jus
 
 === Linked Open Data Requirements Class (Normative)
 
-.Linked Open Data Requirements Class
 [[req_gsml4_lob]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -246,7 +244,6 @@ Serialization of a dataset will often omit the full description of a feature and
 
 === GeoSciML Basic Requirements Class (Normative)
 
-.GeoSciML Basic Requirements Class
 [[req_gsml4_basic]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -975,7 +972,6 @@ image::images/figure-031.png[Partial encoding of the Dacitic vent breccia unit f
 
 === GeoSciML Extension Requirements Class (Normative)
 
-.GeoSciML Extension Requirements Class
 [[req_gsml4_extension]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -1685,7 +1681,6 @@ Vocabularies used in GeoSciML Extension are listed in Table 5 - GeoSciML Extensi
 
 === GeoSciML GeologicTime Requirements Class (Normative)
 
-.GeoSciML GeologicTime Requirements Class
 [[req_gsml4_geologictime]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -1912,7 +1907,6 @@ The GeologicTime package has only one vocabulary (Table 6).
 
 === GeoSciML Borehole Requirements Class (Normative)
 
-.GeoSciML Borehole Requirements Class
 [[req_gsml4_borehole]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -2235,7 +2229,6 @@ Vocabularies used in Borehole package are listed in Table 7.
 
 === GeoSciML LaboratoryAnalysis-Specimen Requirements Class (Normative)
 
-.GeoSciML LaboratoryAnalysis-Specimen Requirements Class
 [[req_gsml4_lab_analysis]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -2619,7 +2612,6 @@ SamplingFeatureCollection might also be used to represent dredge hauls, measured
 
 === GeoSciML Lite Requirements Class (Normative)
 
-.GeoSciML Lite Requirements Class
 [[req_gsml4_lite]]
 [%unnumbered,cols="1,4",width="95%"]
 |===

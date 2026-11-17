@@ -233,4 +233,6 @@ A word-by-word comparison with the normative HTML of OGC 16-008, together with a
 * *Normative references.* Entries with ISO, OGC or RFC identifiers are wrapped in `nofetch()`. This stops Relaton replacing the published citations, for example OGC Abstract Specification Topic 20 with ISO 19156:2011.
 * *Smaller items.* Stray `+` lines were removed (8.4.5.2, end of Annex A, Annex C). The "Tests" row was restored to the clause 6.3 template. An inline box for `/req/gsml4xsd-lite/user-ns` in 9.8.3, which is not in the published standard, was removed.
 
-Still to confirm in the next build: Tables 1 to 17 carry their published numbers, the bibliography is in published order, the two GSMLItem figures are unnumbered, and the cover shows the editor line correctly.
+* *Requirement and conformance table titles.* The class-name titles added in conversion rendered as "Table — …" and filled the list of tables. They are removed. In Annex A the class names move into each table's header row as "A.1 Conformance class: GeoSciML Conceptual" and so on, as published. In clauses 7–9 the names already appear in the clause headings or the table's Name row.
+
+The 17 November rebuild confirmed the numbering, bibliography order, figures, footnotes and cover. Still to confirm: the list of tables shows only Tables 1 to 17, and the Annex A header rows read "A.n Conformance class: …".
