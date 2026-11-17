@@ -1,11 +1,10 @@
 [appendix,obligation="normative"]
 == Conformance classes
 
-.GeoSciML Conceptual
 [[conf_gsml4_conceptual]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.1 Conformance class: GeoSciML Conceptual* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-conceptual {set:cellbgcolor:#FFFFFF}
 |Requirements class |req/gsml4-conceptual
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-conceptual/similarity {set:cellbgcolor:#FFFFFF}
@@ -15,11 +14,10 @@
 |Test type |Capability
 |===
 
-.GeoSciML Core Abstract
 [[conf_gsml4_core]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.2 Conformance class: GeoSciML Core Abstract* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-core {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4-core
 |Dependency |Urn:iso:dis:iso:19156:clause:A.1.1
@@ -54,11 +52,10 @@
 |Test type |Capability
 |===
 
-.GeoSciML Linked Open Data
 [[conf_gsml4_core_2]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.3 Conformance class: GeoSciML Linked Open Data* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-core {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4-core
 |Dependency |RFC 3986
@@ -79,11 +76,10 @@
 |Test type |Capability
 |===
 
-.GeoSciML Basic Logical Model
 [[conf_gsml4_basic]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.4 Conformance class: GeoSciML Basic Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-basic {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4-basic
 |Dependency |/conf/gsml4-core
@@ -114,11 +110,10 @@
 |Test method |Visual inspection that the target implementation has a mechanism to constrain lowerValue to match value[0] and upperValue to match value[1]
 |===
 
-.GeoSciML Extension Logical Model
 [[conf_gsml4_extension]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.5 Conformance class: GeoSciML Extension Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-extension {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4-extension
 |Dependency |/conf/gsml4-basic
@@ -136,11 +131,10 @@
 |Test method |Visual inspection that the target implementation has a mechanism to constrain on of heave, horizontalSlip or throw to be non-null
 |===
 
-.GeoSciML Timescale Logical Model
 [[conf_gsml4_timescale]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.6 Conformance class: GeoSciML Timescale Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-timescale {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4-timescale
 |Dependency |/conf/gsml4-basic
@@ -150,11 +144,10 @@
 |Test method |Visual inspection that the target implementation has a mechanism to check that the age of the start TimeOrdinalEraBoundary is older than the age of the “end” TimeOrdinalEraBoundary
 |===
 
-.GeoSciML Borehole Logical Model
 [[conf_gsml4_borehole]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.7 Conformance class: GeoSciML Borehole Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-borehole {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4-borehole
 |Dependency |/conf/gsml4-basic
@@ -197,11 +190,10 @@
 |Test method |Visual inspection to check that the target implementation has a mechanism to constrain OriginPosition::elevation CRS to a value in the range EPSG:5600 to EPSG:5799
 |===
 
-.GeoSciML LaboratoryAnalysis-Specimen Logical Model
 [[conf_gsml4_lab_analysis]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.8 Conformance class: GeoSciML LaboratoryAnalysis-Specimen Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-lab-analysis {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4-lab-analysis
 |Dependency |/conf/gsml4-basic
@@ -220,11 +212,10 @@
 |Test method |Visually check target implementation for the presence of the mechanism that verifies that the nameOfMeasure is a term from a controlled vocabulary
 |===
 
-.GeoSciML Lite Logical
 [[conf_gsml4_lite]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.9 Conformance class: GeoSciML Lite Logical* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-lite {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4-lite
 |Dependency |/conf/gsml4-core
@@ -286,11 +277,10 @@
 |Test method |Check that the target implementation implements mechanism to ensure that the rotation is in the range [0,360[
 |===
 
-.GeoSciML XML Encoding Abstract Core
 [[conf_gsml4xsd]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.10 Conformance class: GeoSciML XML Encoding Abstract Core* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4xsd
 |Dependency |OGC 10-025r1 OMXML Observations and Measurements - XML Implementation
@@ -312,11 +302,10 @@
 |Test method |Visually inspect instance to validate the presence of time zone indicators.
 |===
 
-.GeoSciML Basic XML Encoding
 [[conf_gsml4xsd_basic]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.11 Conformance class: GeoSciML Basic XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-basic {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4xsd-basic
 |Dependency |/conf/gsml4xsd/core
@@ -330,11 +319,10 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
-.GeoSciML Extension XML Encoding
 [[conf_gsml4xsd_extension]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.12 Conformance class: GeoSciML Extension XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-extension {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4xsd-extension
 |Dependency |/conf/gsml4xsd/basic
@@ -348,11 +336,10 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
-.GeoSciML GeologicTime XML Encoding
 [[conf_gsml4xsd_geologictime]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.13 Conformance class: GeoSciML GeologicTime XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-geologictime {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4xsd-geologictime
 |Dependency |/conf/gsml4xsd/core
@@ -366,11 +353,10 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
-.GeoSciML Borehole XML Encoding
 [[conf_gsml4xsd_borehole]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.14 Conformance class: GeoSciML Borehole XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-borehole {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4xsd-borehole
 |Dependency |/conf/gsml4xsd/core
@@ -385,11 +371,10 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
-.GeoSciML LaboratoryAnalysis-Specimen XML Encoding
 [[conf_gsml4xsd_lab]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.15 Conformance class: GeoSciML LaboratoryAnalysis-Specimen XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-lab {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4xsd-lab
 |Dependency |/conf/gsml4xsd/core
@@ -404,11 +389,10 @@
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
 
-.GeoSciML Lite XML Abstract Encoding
 [[conf_gsml4xsd_lite]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.16 Conformance class: GeoSciML Lite XML Abstract Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-lite {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4xsd-lite
 |Dependency |OGC 05-033r9: Annex A
@@ -418,11 +402,10 @@
 |Test method |Perform the test in OGC 05-033r9 Annex A
 |===
 
-.GeoSciML Lite XML Encoding for GML
 [[conf_gsml4xsd_lite_31]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
+2+|*A.17 Conformance class: GeoSciML Lite XML Encoding for GML* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-lite-31 {set:cellbgcolor:#FFFFFF}
 |Requirements class |/req/gsml4xsd-lite-31
 |Dependency |/req/gsml4xsd-lite

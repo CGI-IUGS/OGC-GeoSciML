@@ -98,7 +98,6 @@ Also to improve readability, the following XML entities are used in instance exa
 
 === GeoSciML Core XML Abstract Requirements Class (Normative)
 
-.GeoSciML Core XML Abstract Requirements Class
 [[req_gsml4xsd]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -251,7 +250,6 @@ Time Zone (example is Newfoundland time zone -3:30)
 
 === GeoSciML Basic XML Requirements Class (Normative)
 
-.GeoSciML Basic XML Requirements Class
 [[req_gsml4xsd_basic]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -308,7 +306,6 @@ In GeoSciML Basic, relatedFeature is byReference only. AbstractFeatureRelation s
 
 === GeoSciML Extension XML Requirements Class (Normative)
 
-.GeoSciML Extension XML Requirements Class
 [[req_gsml4xsd_extension]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -344,7 +341,6 @@ All the elements from the GeoSciML Extension package must pass the schematron ru
 
 === GeoSciML GeologicTime XML Requirements Class (Normative)
 
-.GeoSciML GeologicTime XML Requirements Class
 [[req_gsml4xsd_geologictime]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -379,7 +375,6 @@ All the elements from the GeoSciML Geologic Time package must pass the schematro
 
 === GeoSciML Borehole XML Requirements Class (Normative)
 
-.GeoSciML Borehole XML Requirements Class
 [[req_gsml4xsd_borehole]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -414,7 +409,6 @@ All the elements from the Borehole package must pass the schematron rule defined
 
 === GeoSciML LaboratoryAnalysis-Specimen XML Requirements Class (Normative)
 
-.GeoSciML LaboratoryAnalysis-Specimen XML Requirements Class
 [[req_gsml4xsd_lab]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -449,7 +443,6 @@ All the elements from the GeoSciML Laboratory Analysis & Specimen package must p
 
 === Abstract GeoSciML Lite XML Requirements Class (Normative)
 
-.Abstract GeoSciML Lite XML Requirements Class
 [[req_gsml4xsd_lite]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
@@ -569,7 +562,6 @@ This specification does not prescribe if the user types are to be defined in Geo
 
 === GeoSciML Lite GML 3.1 profile (Normative)
 
-.GeoSciML Lite GML 3.1 profile
 [[req_gsml4xsd_lite_31]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
