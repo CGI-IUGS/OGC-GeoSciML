@@ -16,7 +16,7 @@ The normative artefacts for XML encoding are the W3C XSD documents and W3C schem
 
 For brevity in XML examples, namespace declarations might be omitted. Throughout this document, the following namespace mappings will be assumed:
 
-.Table 16: Default prefix mapping for xml snippets
+.Default prefix mapping for xml snippets
 [cols="2*",options="header"]
 |===
 |Prefix |Namespace URI
@@ -100,7 +100,7 @@ Also to improve readability, the following XML entities are used in instance exa
 
 .GeoSciML Core XML Abstract Requirements Class
 [[req_gsml4xsd]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4xsd {set:cellbgcolor:#FFFFFF}
@@ -134,14 +134,14 @@ This requirements class is shared by all GML/XML GeoSciML instances.
 An XML instance shall validate to both the XSD and schematron rules provided by this specification for each of the XML requirements classes.
 
 [[req_gsml4xsd_xsd]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd/xsd {set:cellbgcolor:#FFFFFF}
 2+|An XML instance SHALL validate against XSD schema. {set:cellbgcolor:#FFFFFF}
 |===
 
 [[req_gsml4xsd_sch]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd/sch {set:cellbgcolor:#FFFFFF}
 2+|An XML instance SHALL pass schematron rules. {set:cellbgcolor:#FFFFFF}
@@ -159,7 +159,7 @@ Open code lists (see 8.2.7) are encoded as gml:ReferenceType which is a sequence
 The xlink:href contains an absolute HTTP URI that should resolve to a resource representation (often a SKOS document). The resource can have multiple representations and it is not guaranteed that an XML parsable document can be obtained from the vocabulary service.
 
 [[req_gsml4xsd_codelist]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd/codelist {set:cellbgcolor:#FFFFFF}
 2+|Vocabulary term SHALL be encoded with HTTP URI in xlink:href and provide a human readable description in xlink:title. {set:cellbgcolor:#FFFFFF}
@@ -172,7 +172,7 @@ The GeoSciML community has developed a best practice of using http://www.ietf.or
 gml:identifier’s flagged with the specific codeSpace “http://www.ietf.org/rfc/rfc2616” should be resolvable HTTP URI that return an instance of itself.
 
 [[req_gsml4xsd_identifier_uri]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd/identifier-uri {set:cellbgcolor:#FFFFFF}
 2+|Feature identifiers (unique name) provided in gml:identifier and @codeSpace = “http://www.ietf.org/rfc/rfc2616” SHOULD be URI of resource using Linked Open Data principles. {set:cellbgcolor:#FFFFFF}
@@ -210,7 +210,7 @@ A nillable property (identified as “voidable” in the UML model) is a propert
 The date-time values shall conform to ISO 8601 standards. Although this is already a GML 3.2 encoding rule (clause 14.2.2.7), this format should also be used in any string that should contain a date, or date and time.
 
 [[req_gsml4xsd_iso8601_time]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd/iso8601-time {set:cellbgcolor:#FFFFFF}
 2+|All date-time occurrences SHOULD be encoded using ISO8601 extended time format. {set:cellbgcolor:#FFFFFF}
@@ -221,7 +221,7 @@ Note that this precludes the use of time-coordinate systems such as UNIX time. T
 The time zone shall be included in the time element.
 
 [[req_gsml4xsd_time_zone]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd/time-zone {set:cellbgcolor:#FFFFFF}
 2+|The value of each time element SHALL include a time zone definition using a signed 4 digit character or a ‘Z’ to represent Zulu or Greenwich Mean Time (GMT). This is defined by the following regular expression: (Z\|[+-]HH:MM). {set:cellbgcolor:#FFFFFF}
@@ -253,7 +253,7 @@ Time Zone (example is Newfoundland time zone -3:30)
 
 .GeoSciML Basic XML Requirements Class
 [[req_gsml4xsd_basic]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4xsd-basic {set:cellbgcolor:#FFFFFF}
@@ -269,7 +269,7 @@ An XML instance document shall pass schematron rules defined in schematron file 
 All the elements from the basic package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd
 
 [[req_gsml4xsd_basic_xsd]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-basic/xsd {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document SHALL validate with schema located at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.xsd. {set:cellbgcolor:#FFFFFF}
@@ -278,7 +278,7 @@ All the elements from the basic package must be schema valid according to the XS
 All the elements from basic package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch.
 
 [[req_gsml4xsd_basic_sch]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-basic/sch {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document SHALL pass schematron rules defined in schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLBasic.sch. {set:cellbgcolor:#FFFFFF}
@@ -310,7 +310,7 @@ In GeoSciML Basic, relatedFeature is byReference only. AbstractFeatureRelation s
 
 .GeoSciML Extension XML Requirements Class
 [[req_gsml4xsd_extension]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4xsd-extension {set:cellbgcolor:#FFFFFF}
@@ -327,7 +327,7 @@ An XML instance document SHALL pass schematron rules defined in schematron file 
 All the elements from the GeoSciML Extension package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.xsd.
 
 [[req_gsml4xsd_extension_xsd]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-extension/xsd {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document SHALL validate with schema located at http://schemas.opengis.net/gsml/4.1/ geoSciMLExtension.xsd. {set:cellbgcolor:#FFFFFF}
@@ -336,7 +336,7 @@ All the elements from the GeoSciML Extension package must be schema valid accord
 All the elements from the GeoSciML Extension package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.sch.
 
 [[req_gsml4xsd_extension_sch]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-extension/sch {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document SHALL pass schematron rules defined in schematron file located at http://schemas.opengis.net/gsml/4.1/geoSciMLExtension.sch. {set:cellbgcolor:#FFFFFF}
@@ -346,7 +346,7 @@ All the elements from the GeoSciML Extension package must pass the schematron ru
 
 .GeoSciML GeologicTime XML Requirements Class
 [[req_gsml4xsd_geologictime]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4xsd-geologictime {set:cellbgcolor:#FFFFFF}
@@ -362,7 +362,7 @@ An XML instance document SHALL pass schematron rules defined in schematron file 
 All the elements from the GeoSciML Geologic Time package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geologicTime.xsd.
 
 [[req_gsml4xsd_geologictime_xsd]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-geologictime/xsd {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document SHALL validate with schema located at http://schemas.opengis.net/gsml/4.1/geologicTime.xsd. {set:cellbgcolor:#FFFFFF}
@@ -371,7 +371,7 @@ All the elements from the GeoSciML Geologic Time package must be schema valid ac
 All the elements from the GeoSciML Geologic Time package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geologictime.sch.
 
 [[req_gsml4xsd_geologictime_sch]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-geologictime/sch {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document SHALL pass schematron rules defined in schematron file located at http://schemas.opengis.net/gsml/4.1/geologicTime.sch. {set:cellbgcolor:#FFFFFF}
@@ -381,7 +381,7 @@ All the elements from the GeoSciML Geologic Time package must pass the schematro
 
 .GeoSciML Borehole XML Requirements Class
 [[req_gsml4xsd_borehole]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4xsd-borehole {set:cellbgcolor:#FFFFFF}
@@ -397,7 +397,7 @@ An XML instance document shall pass schematron rules defined in schematron file 
 All the elements from the Borehole package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/borehole.xsd.
 
 [[req_gsml4xsd_borehole_xsd]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-borehole/xsd {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document shall validate with schema located at http://schemas.opengis.net/gsml/4.1/borehole.xsd. {set:cellbgcolor:#FFFFFF}
@@ -406,7 +406,7 @@ All the elements from the Borehole package must be schema valid according to the
 All the elements from the Borehole package must pass the schematron rule defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/borehole.sch.
 
 [[req_gsml4xsd_borehole_sch]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-borehole/sch {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document shall pass schematron rules defined in schematron file located at http://schemas.opengis.net/gsml/4.1/borehole.sch. {set:cellbgcolor:#FFFFFF}
@@ -416,7 +416,7 @@ All the elements from the Borehole package must pass the schematron rule defined
 
 .GeoSciML LaboratoryAnalysis-Specimen XML Requirements Class
 [[req_gsml4xsd_lab]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4xsd-lab {set:cellbgcolor:#FFFFFF}
@@ -432,7 +432,7 @@ An XML instance document SHALL pass schematron rules defined in schematron file 
 All the elements from the GeoSciML Laboratory Analysis & Specimen package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd.
 
 [[req_gsml4xsd_lab_xsd]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-lab/xsd {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document SHALL validate with schema located at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.xsd. {set:cellbgcolor:#FFFFFF}
@@ -441,7 +441,7 @@ All the elements from the GeoSciML Laboratory Analysis & Specimen package must b
 All the elements from the GeoSciML Laboratory Analysis & Specimen package must pass the schematron rule defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch.
 
 [[req_gsml4xsd_lab_sch]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-lab/sch {set:cellbgcolor:#FFFFFF}
 2+|XML instance document SHALL pass schematron rules defined in schematron file located at http://schemas.opengis.net/gsml/4.1/laboratoryAnalysis-Specimen.sch. {set:cellbgcolor:#FFFFFF}
@@ -451,7 +451,7 @@ All the elements from the GeoSciML Laboratory Analysis & Specimen package must p
 
 .Abstract GeoSciML Lite XML Requirements Class
 [[req_gsml4xsd_lite]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4xsd-lite {set:cellbgcolor:#FFFFFF}
@@ -476,7 +476,7 @@ The abstract GeoSciML Lite encoding sets general encoding rules for XML targets,
 GeoSciML Lite schemas are meant to deliver simple content, consistent with simple scenarios described in GML Simple Feature Level 0 (OGC 10-100r3). User defined properties must respect the same constrains as defined in SF-0 specification.
 
 [[req_gsml4xsd_lite_sf_0]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-lite/SF-0 {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document SHALL be compliant to GML Simple Feature Level 0. {set:cellbgcolor:#FFFFFF}
@@ -484,7 +484,7 @@ GeoSciML Lite schemas are meant to deliver simple content, consistent with simpl
 
 Simple Feature defines 3 compliance levels summarized in Table17.
 
-.Table 17: Reproduction of Table 1 of 10-100r3 (Clause 2.1).
+.Reproduction of Table 1 of 10-100r3 (Clause 2.1).
 [cols="4*",options="header"]
 |===
 | |Level SF-0 |Level SF-1 |Level SF-2
@@ -536,7 +536,7 @@ Simple Feature defines 3 compliance levels summarized in Table17.
 SF-0 allows the definition of complex content (Clause 9.3.2 of OGC 10-100r3). To be consistent with the most common scenario encountered in GIS which is a direct mapping from a database table to XML, this specification recommends that user defined content be restricted to simple type.
 
 [[req_gsml4xsd_lite_sf_0_simpletype]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-lite/SF-0-simpletype {set:cellbgcolor:#FFFFFF}
 2+|User defined elements SHOULD be XSD simpleType. {set:cellbgcolor:#FFFFFF}
@@ -557,7 +557,7 @@ GeoSciML Lite allows user defined properties to be appended at the end of the li
 Process content is set to “lax”, which means the validator will attempt to validate user defined property only if a schema is. To help client applications and developers to validate instance containing user defined properties, a XSD schema should be provided in the instance’s schemaLocation attribute.
 
 [[req_gsml4xsd_lite_user_xsd]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-lite/user-xsd {set:cellbgcolor:#FFFFFF}
 2+|An XSD schema SHOULD be provided by data provider to validate user defined properties. {set:cellbgcolor:#FFFFFF}
@@ -567,18 +567,11 @@ Process content is set to “lax”, which means the validator will attempt to v
 
 This specification does not prescribe if the user types are to be defined in GeoSciML Lite namespace or using a different namespace. It is understood that this might be constrained by the technology used to generate the instance. But to avoid potential conflict with future minor changes to GeoSciML Lite, or name conflicts when aggregating results from many sources, it is recommended that the data providers, or the community, use different namespaces, if possible.
 
-[[req_gsml4xsd_lite_user_ns]]
-[cols="1,4",width="90%"]
-|===
-|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-lite/user-ns {set:cellbgcolor:#FFFFFF}
-2+|User properties SHOULD be defined in a namespace unique to a community or a data provider. {set:cellbgcolor:#FFFFFF}
-|===
-
 === GeoSciML Lite GML 3.1 profile (Normative)
 
 .GeoSciML Lite GML 3.1 profile
 [[req_gsml4xsd_lite_31]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4xsd-lite-31 {set:cellbgcolor:#FFFFFF}
@@ -596,7 +589,7 @@ Because of the limited availability of WFS 2.0 compliant servers and clients, Ge
 All the elements from the GeoSciML Lite package must be schema valid according to the XSD document provided at http://schemas.opengis.net/gsml/4.1/geosciml-lite.xsd.
 
 [[req_gsml4xsd_lite_31_xsd]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-lite-31/xsd {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document shall validate with schema located at http://schemas.opengis.net/gsml/4.1/geosciml-portrayal.xsd. {set:cellbgcolor:#FFFFFF}
@@ -605,7 +598,7 @@ All the elements from the GeoSciML Lite package must be schema valid according t
 All the elements from the GeoSciML Lite package must pass the schematron rules defined in the schematron file located at http://schemas.opengis.net/gsml/4.1/geosciml-lite.sch.
 
 [[req_gsml4xsd_lite_31_sch]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-lite-31/sch {set:cellbgcolor:#FFFFFF}
 2+|An XML instance document shall pass schematron rules defined in schematron file located at http://schemas.opengis.net/gsml/4.1/geosciml-lite.sch. {set:cellbgcolor:#FFFFFF}

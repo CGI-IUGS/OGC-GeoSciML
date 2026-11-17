@@ -3,7 +3,7 @@
 
 .GeoSciML Conceptual
 [[conf_gsml4_conceptual]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-conceptual {set:cellbgcolor:#FFFFFF}
@@ -17,7 +17,7 @@
 
 .GeoSciML Core Abstract
 [[conf_gsml4_core]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-core {set:cellbgcolor:#FFFFFF}
@@ -56,7 +56,7 @@
 
 .GeoSciML Linked Open Data
 [[conf_gsml4_core_2]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-core {set:cellbgcolor:#FFFFFF}
@@ -81,7 +81,7 @@
 
 .GeoSciML Basic Logical Model
 [[conf_gsml4_basic]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-basic {set:cellbgcolor:#FFFFFF}
@@ -116,7 +116,7 @@
 
 .GeoSciML Extension Logical Model
 [[conf_gsml4_extension]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-extension {set:cellbgcolor:#FFFFFF}
@@ -138,7 +138,7 @@
 
 .GeoSciML Timescale Logical Model
 [[conf_gsml4_timescale]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-timescale {set:cellbgcolor:#FFFFFF}
@@ -152,7 +152,7 @@
 
 .GeoSciML Borehole Logical Model
 [[conf_gsml4_borehole]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-borehole {set:cellbgcolor:#FFFFFF}
@@ -199,7 +199,7 @@
 
 .GeoSciML LaboratoryAnalysis-Specimen Logical Model
 [[conf_gsml4_lab_analysis]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-lab-analysis {set:cellbgcolor:#FFFFFF}
@@ -222,7 +222,7 @@
 
 .GeoSciML Lite Logical
 [[conf_gsml4_lite]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-lite {set:cellbgcolor:#FFFFFF}
@@ -288,7 +288,7 @@
 
 .GeoSciML XML Encoding Abstract Core
 [[conf_gsml4xsd]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd {set:cellbgcolor:#FFFFFF}
@@ -314,7 +314,7 @@
 
 .GeoSciML Basic XML Encoding
 [[conf_gsml4xsd_basic]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-basic {set:cellbgcolor:#FFFFFF}
@@ -332,7 +332,7 @@
 
 .GeoSciML Extension XML Encoding
 [[conf_gsml4xsd_extension]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-extension {set:cellbgcolor:#FFFFFF}
@@ -350,7 +350,7 @@
 
 .GeoSciML GeologicTime XML Encoding
 [[conf_gsml4xsd_geologictime]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-geologictime {set:cellbgcolor:#FFFFFF}
@@ -368,7 +368,7 @@
 
 .GeoSciML Borehole XML Encoding
 [[conf_gsml4xsd_borehole]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-borehole {set:cellbgcolor:#FFFFFF}
@@ -387,7 +387,7 @@
 
 .GeoSciML LaboratoryAnalysis-Specimen XML Encoding
 [[conf_gsml4xsd_lab]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-lab {set:cellbgcolor:#FFFFFF}
@@ -406,7 +406,7 @@
 
 .GeoSciML Lite XML Abstract Encoding
 [[conf_gsml4xsd_lite]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-lite {set:cellbgcolor:#FFFFFF}
@@ -420,7 +420,7 @@
 
 .GeoSciML Lite XML Encoding for GML
 [[conf_gsml4xsd_lite_31]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-lite-31 {set:cellbgcolor:#FFFFFF}
@@ -435,5 +435,3 @@
 |Test purpose |Ensure that encoding rules defined in the specification are met
 |Test method |Perform a schematron validation on the XML instance. Test succeeds if the validation does not report any failed rules.
 |===
-
-+

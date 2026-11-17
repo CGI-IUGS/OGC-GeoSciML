@@ -49,11 +49,3 @@
 * [[[ref23,23]]] Walshe, S.L. Gradstein, F.M. & Ogg, J.G.: History, philosophy, and application of the Global Stratotype Section and Point (GSSP), Lethaia, 37, 201-218, ISSN 0024-1164 (2004) <http://precambrian.stratigraphy.org/Walsh_et_al_2004.pdf>
 
 * [[[ref24,24]]] Zingg, T.: Beiträge zur Schotteranalyze: In Schweiz. Mineralog. Petrog. Mitt, v. 15, 39-140 (1935)
-
-+
-
-[1] http://www.opengeospatial.org/cite[www.opengeospatial.org/cite]
-
-[2] https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14 Clause 2
-
-[3] SWE RealPair is encoded as space delimited lists (<swe:value>10 300</swe:value> in XML) , which demands that clients parse the string to extract each token. To build a WFS/FES query that tests the first element, it requires parsing the string either using string-before(swe:value,’ ’) or tokenize(swe:value,’ ’). This is cumbersome at best, or not even supported by the server at worst. 09-026r2 Clause 7.4.4 describes the minimal XPath supports and string parsing is not present.

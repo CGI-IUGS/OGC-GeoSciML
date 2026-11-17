@@ -4,7 +4,7 @@
 
 Each normative statement (requirement or recommendation) in this specification is a member of a requirements class. Each requirements class is described in a discrete clause or sub-clause, and summarized using the following template:
 
-[cols="2*",options="header"]
+[%unnumbered,cols="2*",options="header"]
 |===
 |Requirements class |/req/\{classM}
 
@@ -35,7 +35,7 @@ All requirements in a requirements class must be satisfied. Hence, the requireme
 All requirements and recommendations are normative, and each is presented using the following template:
 
 [[req_classm_reqn]]
-[cols="1,4",width="90%"]
+[%unnumbered,cols="1,4",width="90%"]
 |===
 |*Requirement* {set:cellbgcolor:#CACCCE} |/req/[classM]/[reqN] {set:cellbgcolor:#FFFFFF}
 2+|[Normative statement] {set:cellbgcolor:#FFFFFF}
@@ -49,12 +49,13 @@ Conformance to this specification is possible at a number of levels, specified b
 
 .Conformance class
 [[conf_classm]]
-[cols="1,4",width="95%"]
+[%unnumbered,cols="1,4",width="95%"]
 |===
 2+|*Conformance Class* {set:cellbgcolor:#CACCCE}
 2+|/conf/{classM} {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/\{classA}
 |Dependency |[identifier for another conformance class]
+|Requirements |/req/\{classA}
+|Tests |[reference to clause(s) containing tests]
 |===
 
 All tests in a class must be passed. Each conformance class tests conformance to a set of requirements packaged in a requirements class.

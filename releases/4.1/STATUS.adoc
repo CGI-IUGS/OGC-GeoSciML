@@ -218,3 +218,19 @@ The included `.gitlab-ci.yml` is the standard OGC/Cimas template CI. Its build
 step was pointed at this directory (`metanorma site generate . --output-dir
 public`) to match this layout. If these files are placed in a subdirectory of a
 larger repository, adjust that path (or the working directory) accordingly.
+
+== Sign-off check against the published 16-008 (17 November 2026)
+
+A word-by-word comparison with the normative HTML of OGC 16-008, together with a review of a Metanorma build, found these differences. They are corrected in this revision:
+
+* *Requirements class identifier.* The `/req/gsml4-conceptual` identifier in clause 7 was empty; it is restored.
+* *Two figures in 8.4.5.2 (GSMLItem).* The published standard has two uncaptioned instance diagrams (options a and b) that were missing. They are restored as `images/figure-024a.png` and `images/figure-024b.png`, extracted unchanged from the published HTML, and marked unnumbered so figure numbering still matches. Earlier notes counting "all 107 figures" missed these two.
+* *Footnotes.* The three footnotes had lost their markers and were sitting after the bibliography as "[1]" to "[3]". They are now footnotes at their original positions (clause 2, 8.3 and 8.4.6.5).
+* *Front matter.* Two Preface paragraphs copied from Scope and Conformance were removed. The Contributors and Security Considerations sections, which are not in the published standard, were removed. If the OGC flavour inserts a Security Considerations clause automatically, that is template boilerplate, not source text.
+* *Cover.* The editor is "GeoSciML Modeling Team" and the external identifier is `http://www.opengis.net/doc/geosciml/4.1`, as published.
+* *Numbering.* The typed "Table N:" and "Figure 76 :" prefixes were removed from titles, because Metanorma adds its own labels. Every table other than the 17 numbered tables of the published standard is now `%unnumbered`, so Tables 1 to 17 keep their published numbers.
+* *Bibliography order.* `:sort-biblio: false` keeps Annex C in published order, so the plain-text citations ([3], [12] and so on) point at the right entries.
+* *Normative references.* Entries with ISO, OGC or RFC identifiers are wrapped in `nofetch()`. This stops Relaton replacing the published citations, for example OGC Abstract Specification Topic 20 with ISO 19156:2011.
+* *Smaller items.* Stray `+` lines were removed (8.4.5.2, end of Annex A, Annex C). The "Tests" row was restored to the clause 6.3 template. An inline box for `/req/gsml4xsd-lite/user-ns` in 9.8.3, which is not in the published standard, was removed.
+
+Still to confirm in the next build: Tables 1 to 17 carry their published numbers, the bibliography is in published order, the two GSMLItem figures are unnumbered, and the cover shows the editor line correctly.
