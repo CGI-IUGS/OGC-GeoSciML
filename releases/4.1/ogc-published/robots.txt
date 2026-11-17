@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /DRAFTS
+Disallow: /DRAFTS/
+Disallow: /DRAFTS/*
+Sitemap: https://docs.ogc.org/sitemap.xml
