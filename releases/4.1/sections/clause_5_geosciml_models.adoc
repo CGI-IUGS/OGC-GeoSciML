@@ -62,7 +62,7 @@ This pattern has two main advantages:
 
 GeoSciML Basic contains nine stub AbstractDescription classes ultimately materialised in GeoSciML Extension (Table 1).
 
-.Table 1: GeoSciML Basic stub AbstractDescription classes.
+.GeoSciML Basic stub AbstractDescription classes.
 [cols="2*",options="header"]
 |===
 |Class |Description
