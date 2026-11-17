@@ -2713,7 +2713,7 @@ Figure 98 shows mapping for some GeologicUnitView properties. Number 3 on this f
 
 In OCL,
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 specification:GeomorphologicUnit::unitDescription[1]:GeologicUnit::compos
 ition[1]:CompositionPart::material:RockMaterial::lithology
@@ -2723,7 +2723,7 @@ The base type (MappedFeature) is not included as it is the context type. Package
 
 A W3C XPath equivalent (using prefixes proposed in 9.1)
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 gsmlb:Specification/gsmlb:GeomorphologicUnit/gsmlb:unitDescription[1]/gsm
 lb:GeologicUnit/gsmlb:composition[1]/gsmlb:CompositionPart/gsmlb:material
@@ -2928,7 +2928,9 @@ GeologicUnitView is a simplified view of a GeoSciML MappedFeature feature with k
 |*shape*
 |shape
 
-|*^1^**In cases where multiple values are delivered for these elements in GeoSciML, data providers should*choose*one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite* *^2^**Use an appropriate*human readable label*for the vocabulary* *^3^**Use a*reference*or an identifier that can be used to reach a representation.*
+|^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should choose one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite +
+^2^ Use an appropriate human readable label for the vocabulary +
+^3^ Use a reference or an identifier that can be used to reach a representation.
 |
 
 |===
@@ -3144,7 +3146,9 @@ image::images/figure-101.png[BoreholeView feature type.]
 |*shape*
 |shape
 
-|*^1^**In cases where multiple values are delivered for these elements in GeoSciML, data providers should*choose*one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite* *^2^**Use an appropriate*human readable label*for the vocabulary* *^3^**Use a*reference*or an identifier that can be used to reach a representation.*
+|^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should choose one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite +
+^2^ Use an appropriate human readable label for the vocabulary +
+^3^ Use a reference or an identifier that can be used to reach a representation.
 |
 
 |===
@@ -3317,7 +3321,9 @@ ContactView is a simplified view of a GeoSciML MappedFeature with key property v
 |*Shape*
 |shape
 
-|*^1^**In cases where multiple values are delivered for these elements in GeoSciML, data providers should*choose*one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite* *^2^**Use an appropriate*human readable label*for the vocabulary* *^3^**Use a*reference*or an identifier that can be used to reach a representation.*
+|^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should choose one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite +
+^2^ Use an appropriate human readable label for the vocabulary +
+^3^ Use a reference or an identifier that can be used to reach a representation.
 |
 
 |===
@@ -3443,7 +3449,9 @@ GeologicSpecimenView is a simplified view of a point-located specimen from GeoSc
 |*shape*
 |samplingLocation
 
-|*^1^**In cases where multiple values are delivered for these elements in GeoSciML, data providers should*choose*one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite* *^2^**Use an appropriate*human readable label*for the vocabulary* *^3^**Use a*reference*or an identifier that can be used to reach a representation.*
+|^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should choose one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite +
+^2^ Use an appropriate human readable label for the vocabulary +
+^3^ Use a reference or an identifier that can be used to reach a representation.
 |
 
 |===
@@ -3604,7 +3612,9 @@ GeomorphologicUnitView is a simplified view of a GeoSciML GeomorphologicUnit. In
 |*shape*
 |shape
 
-|*^1^**In cases where multiple values are delivered for these elements in GeoSciML, data providers should*choose*one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite* *^2^**Use an appropriate*human readable label*for the vocabulary* *^3^**Use a*reference*or an identifier that can be used to reach a representation.*
+|^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should choose one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite +
+^2^ Use an appropriate human readable label for the vocabulary +
+^3^ Use a reference or an identifier that can be used to reach a representation.
 |
 
 |===
@@ -3790,7 +3800,9 @@ ShearDisplacementStructureView is a simplified view of a GeoSciML ShearDisplacem
 |*shape*
 |shape
 
-|*^1^**In case where multiple values are delivered for these elements in GeoSciML, data providers should*choose*one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite* *^2^**Use an appropriate*human readable label*for the vocabulary* *^3^**Use a*reference*or an identifier that can be used to reach a representation.*
+|^1^ In case where multiple values are delivered for these elements in GeoSciML, data providers should choose one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite +
+^2^ Use an appropriate human readable label for the vocabulary +
+^3^ Use a reference or an identifier that can be used to reach a representation.
 |
 
 |===
@@ -3969,7 +3981,11 @@ SiteObservationView is a simplified view of a generally point-located geological
 |*shape*
 |featureOfInterest:(…):GM_Object
 
-|*^1^**In cases where multiple values are delivered for these elements in GeoSciML, data providers should*choose*one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite* *^2^**Use an appropriate*human readable label*for the vocabulary* *^3^**Use a*reference*or an identifier that can be used to reach a representation.* *^4^**Observations associated to a SF_SamplingFeature can report it although SF_SamplingFeature::relatedObservation:OM_Observation is not traversable in reverse, unless it is also the featureOfInterest* *5 OM_Measurement::value type is any type and might or might not have a unit of measurement. The property carrying depend of the result type.*
+|^1^ In cases where multiple values are delivered for these elements in GeoSciML, data providers should choose one, or merge, or concatenate values into a representative single value for use in GeoSciML Lite +
+^2^ Use an appropriate human readable label for the vocabulary +
+^3^ Use a reference or an identifier that can be used to reach a representation. +
+^4^ Observations associated to a SF_SamplingFeature can report it although SF_SamplingFeature::relatedObservation:OM_Observation is not traversable in reverse, unless it is also the featureOfInterest +
+^5^ OM_Measurement::value type is any type and might or might not have a unit of measurement. The property carrying depend of the result type.
 |
 
 |===

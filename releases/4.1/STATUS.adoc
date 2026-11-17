@@ -238,4 +238,9 @@ A word-by-word comparison with the normative HTML of OGC 16-008, together with a
 * *Abstract requirements classes.* The header rows of the 8.2 and 9.2 class tables read "Abstract Requirements Class", as published.
 * *Security Considerations.* The OGC Metanorma template inserts this clause ("No security considerations have been made for this document.") even when the source has none. It is template boilerplate for the editors to accept.
 
+* *Lite mapping table notes (8.9.3 to 8.9.9).* Broken bold markup in the numbered notes under each table made Metanorma drop notes 2 and 4 and show stray asterisks. The notes are now plain text with superscript numbers, as published.
+* *Code listings.* Metanorma numbered the 17 code and URI-pattern blocks as "Listing 1" to "Listing 17". They are `%unnumbered`, as in the publication.
+* *Annex A.* The row label "Requirements class" reads "Requirements", as published.
+* *Terms boilerplate.* The OGC template adds a sentence citing OGC Policy Directive 49 to clause 4, and its own normative references introduction. These come from the template, for the editors to accept.
+
 The 17 November rebuild confirmed the numbering, bibliography order, figures, footnotes and cover. Still to confirm: the list of tables shows only Tables 1 to 17, and the Annex A header rows read "A.n Conformance class: …".

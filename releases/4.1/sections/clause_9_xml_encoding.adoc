@@ -88,7 +88,7 @@ For brevity in XML examples, namespace declarations might be omitted. Throughout
 
 Also to improve readability, the following XML entities are used in instance examples.
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 <!ENTITY guid “http://www.ietf.org/rfc/rfc2616”>
 <!ENTITY resource " http://resource.geosciml.org">
@@ -150,7 +150,7 @@ An XML instance shall validate to both the XSD and schematron rules provided by 
 
 Open code lists (see 8.2.7) are encoded as gml:ReferenceType which is a sequence of gml:OwnershipAttributeGroup and gml:AssociationAttributeGroup, providing a series of xml attributes from W3C XLINK (http://www.w3.org/TR/xlink11/). A vocabulary term reference has mandatory xlink:href and xlink:title attributes.
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 <gsmlb:lithology link:href=“http://resource.geosciml.org/ classifier/cgi/lithology/granite” xlink:title=“granite”/>
 ----
@@ -177,7 +177,7 @@ gml:identifier’s flagged with the specific codeSpace “http://www.ietf.org/rf
 2+|Feature identifiers (unique name) provided in gml:identifier and @codeSpace = “http://www.ietf.org/rfc/rfc2616” SHOULD be URI of resource using Linked Open Data principles. {set:cellbgcolor:#FFFFFF}
 |===
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 <gml:identifier 
     codeSpace="http://www.ietf.org/rfc/rfc2616/">
@@ -186,7 +186,7 @@ gml:identifier’s flagged with the specific codeSpace “http://www.ietf.org/rf
 
 Resolving http://data.geoscience.gov.xx/feature/asc/geologicunit/stratno/25947 shall return:
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 <gsmlb:GeologicUnit gml:id=“G1”>
 (…)
@@ -228,7 +228,7 @@ The time zone shall be included in the time element.
 
 Greenwich Mean Time (GMT or Zulu)
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 <om:phenomenonTime>
   <gml:TimeInstant gml:id="ti.1">
@@ -239,7 +239,7 @@ Greenwich Mean Time (GMT or Zulu)
 
 Time Zone (example is Newfoundland time zone -3:30)
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 <om:phenomenonTime>
   <gml:TimeInstant gml:id="ti.2">
@@ -286,7 +286,7 @@ Some properties links to stub property blocks (see 5.1) whose values are empty a
 
 This instance is *not* XSD valid:
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 <?xml version=“1.0” encoding=“UTF-8”?>
 <GeologicUnit xmlns="http://www.opengis.net/gsml/4.1/GeoSciML-Basic"
@@ -537,7 +537,7 @@ SF-0 allows the definition of complex content (Clause 9.3.2 of OGC 10-100r3). To
 
 GeoSciML Lite allows user defined properties to be appended at the end of the list of feature properties using xsd:any
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 <any processContents="lax" minOccurs="0" maxOccurs="unbounded">
       <annotation>

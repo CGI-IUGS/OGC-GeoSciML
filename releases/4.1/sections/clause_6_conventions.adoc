@@ -63,7 +63,7 @@ W3C Schema (XSD) and ISO Schematron (SCH) files are considered as part of this s
 
 Schematron files explicitly specify which requirements are being tested in the title of the schematron pattern.
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 <pattern id="unit-of-measure">
     <title>Test requirement: /req/gsml4xsd/unit-of-measure</title>
@@ -77,7 +77,7 @@ Schematron files explicitly specify which requirements are being tested in the t
 
 The normative provisions in this specification are denoted by a URI constructed using this pattern:
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 http://www.opengis.net/spec/{standard}/{m.n}
 ----
@@ -86,28 +86,28 @@ All requirements and conformance tests that appear in this document are denoted 
 
 The URI for each requirements class has the form:
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 http://www.opengis.net/spec/geosciml/4.1/req/[classM].
 ----
 
 The URI for each requirement or recommendation has the form:
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 http://www.opengis.net/spec/geosciml/4.1/req/[classM]/[reqN].
 ----
 
 The URI for each conformance class has the form:
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 http://www.opengis.net/spec/geosciml/4.1/conf/[classM].
 ----
 
 The URI for each conformance test has the form:
 
-[source,xml]
+[source%unnumbered,xml]
 ----
 http://www.opengis.net/spec/geosciml/4.1/conf/[classM]/[testN].
 ----
