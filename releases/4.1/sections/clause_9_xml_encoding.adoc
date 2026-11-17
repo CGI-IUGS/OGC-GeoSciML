@@ -101,7 +101,7 @@ Also to improve readability, the following XML entities are used in instance exa
 [[req_gsml4xsd]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
+2+|*Abstract Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4xsd {set:cellbgcolor:#FFFFFF}
 |Target type |Data instance
 |Dependency |/req/gsml4-core
@@ -559,6 +559,13 @@ Process content is set to “lax”, which means the validator will attempt to v
 ==== User Defined Namespaces
 
 This specification does not prescribe if the user types are to be defined in GeoSciML Lite namespace or using a different namespace. It is understood that this might be constrained by the technology used to generate the instance. But to avoid potential conflict with future minor changes to GeoSciML Lite, or name conflicts when aggregating results from many sources, it is recommended that the data providers, or the community, use different namespaces, if possible.
+
+[[req_gsml4xsd_lite_user_ns]]
+[%unnumbered,cols="1,4",width="90%"]
+|===
+|*Requirement* {set:cellbgcolor:#CACCCE} |/req/gsml4xsd-lite/user-ns {set:cellbgcolor:#FFFFFF}
+2+|User properties SHOULD be defined in a namespace unique to a community or a data provider. {set:cellbgcolor:#FFFFFF}
+|===
 
 === GeoSciML Lite GML 3.1 profile (Normative)
 

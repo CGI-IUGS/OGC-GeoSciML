@@ -60,7 +60,7 @@ The following shortcuts are used to refer to external (non GeoSciML) classifiers
 [[req_gsml4_core]]
 [%unnumbered,cols="1,4",width="95%"]
 |===
-2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
+2+|*Abstract Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|/req/gsml4-core {set:cellbgcolor:#FFFFFF}
 |Target type |Encoding
 |Dependency |ISO19103:2005 Conceptual Schema Language
