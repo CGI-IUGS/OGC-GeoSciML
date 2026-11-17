@@ -6,7 +6,7 @@
 |===
 2+|*A.1 Conformance class: GeoSciML Conceptual* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-conceptual {set:cellbgcolor:#FFFFFF}
-|Requirements class |req/gsml4-conceptual
+|Requirements |req/gsml4-conceptual
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-conceptual/similarity {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4-conceptual/similarity
 |Test purpose |Ensure that the target logical model is compatible with the conceptual model.
@@ -19,7 +19,7 @@
 |===
 2+|*A.2 Conformance class: GeoSciML Core Abstract* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-core {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4-core
+|Requirements |/req/gsml4-core
 |Dependency |Urn:iso:dis:iso:19156:clause:A.1.1
 |Dependency |RFC 3986
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-core/uml-entity-name {set:cellbgcolor:#FFFFFF}
@@ -57,7 +57,7 @@
 |===
 2+|*A.3 Conformance class: GeoSciML Linked Open Data* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-core {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4-core
+|Requirements |/req/gsml4-core
 |Dependency |RFC 3986
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-lod/codelistURI {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4-lod/codelistURI
@@ -81,7 +81,7 @@
 |===
 2+|*A.4 Conformance class: GeoSciML Basic Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-basic {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4-basic
+|Requirements |/req/gsml4-basic
 |Dependency |/conf/gsml4-core
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-basic/geologicfeature-purpose {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4-basic/geologicfeature-purpose
@@ -115,7 +115,7 @@
 |===
 2+|*A.5 Conformance class: GeoSciML Extension Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-extension {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4-extension
+|Requirements |/req/gsml4-extension
 |Dependency |/conf/gsml4-basic
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-extension/geologicfeature-history {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4-extension/geologicfeature-history
@@ -136,7 +136,7 @@
 |===
 2+|*A.6 Conformance class: GeoSciML Timescale Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-timescale {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4-timescale
+|Requirements |/req/gsml4-timescale
 |Dependency |/conf/gsml4-basic
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-timescale/start {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4-timescale/start
@@ -149,7 +149,7 @@
 |===
 2+|*A.7 Conformance class: GeoSciML Borehole Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-borehole {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4-borehole
+|Requirements |/req/gsml4-borehole
 |Dependency |/conf/gsml4-basic
 |Dependency |ISO 19156 Annex A
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-borehole/value-intervalBegin {set:cellbgcolor:#FFFFFF}
@@ -195,7 +195,7 @@
 |===
 2+|*A.8 Conformance class: GeoSciML LaboratoryAnalysis-Specimen Logical Model* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-lab-analysis {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4-lab-analysis
+|Requirements |/req/gsml4-lab-analysis
 |Dependency |/conf/gsml4-basic
 |Dependency |ISO 19156 Annex A
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-lab-analysis/sampledFeature {set:cellbgcolor:#FFFFFF}
@@ -217,7 +217,7 @@
 |===
 2+|*A.9 Conformance class: GeoSciML Lite Logical* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4-lite {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4-lite
+|Requirements |/req/gsml4-lite
 |Dependency |/conf/gsml4-core
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4-lite/geomtype {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4-lite/geomtype
@@ -282,7 +282,7 @@
 |===
 2+|*A.10 Conformance class: GeoSciML XML Encoding Abstract Core* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4xsd
+|Requirements |/req/gsml4xsd
 |Dependency |OGC 10-025r1 OMXML Observations and Measurements - XML Implementation
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4xsd/xsd {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4xsd/xsd
@@ -307,7 +307,7 @@
 |===
 2+|*A.11 Conformance class: GeoSciML Basic XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-basic {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4xsd-basic
+|Requirements |/req/gsml4xsd-basic
 |Dependency |/conf/gsml4xsd/core
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4xsd-basic/xsd {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4xsd-basic/xsd
@@ -324,7 +324,7 @@
 |===
 2+|*A.12 Conformance class: GeoSciML Extension XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-extension {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4xsd-extension
+|Requirements |/req/gsml4xsd-extension
 |Dependency |/conf/gsml4xsd/basic
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4xsd-extension/xsd {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4xsd-extension/xsd
@@ -341,7 +341,7 @@
 |===
 2+|*A.13 Conformance class: GeoSciML GeologicTime XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-geologictime {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4xsd-geologictime
+|Requirements |/req/gsml4xsd-geologictime
 |Dependency |/conf/gsml4xsd/core
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4xsd-geologictime/xsd {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4xsd-geologictime/xsd
@@ -358,7 +358,7 @@
 |===
 2+|*A.14 Conformance class: GeoSciML Borehole XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-borehole {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4xsd-borehole
+|Requirements |/req/gsml4xsd-borehole
 |Dependency |/conf/gsml4xsd/core
 |Dependency |OGC 10-025r1 OMXML
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4xsd-borehole/xsd {set:cellbgcolor:#FFFFFF}
@@ -376,7 +376,7 @@
 |===
 2+|*A.15 Conformance class: GeoSciML LaboratoryAnalysis-Specimen XML Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-lab {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4xsd-lab
+|Requirements |/req/gsml4xsd-lab
 |Dependency |/conf/gsml4xsd/core
 |Dependency |OGC 10-025r1 OMXML
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4xsd-lab/xsd {set:cellbgcolor:#FFFFFF}
@@ -394,7 +394,7 @@
 |===
 2+|*A.16 Conformance class: GeoSciML Lite XML Abstract Encoding* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-lite {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4xsd-lite
+|Requirements |/req/gsml4xsd-lite
 |Dependency |OGC 05-033r9: Annex A
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4xsd-lite/SF-0 {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4xsd-lite/SF-0
@@ -407,7 +407,7 @@
 |===
 2+|*A.17 Conformance class: GeoSciML Lite XML Encoding for GML* {set:cellbgcolor:#CACCCE}
 2+|/conf/gsml4xsd-lite-31 {set:cellbgcolor:#FFFFFF}
-|Requirements class |/req/gsml4xsd-lite-31
+|Requirements |/req/gsml4xsd-lite-31
 |Dependency |/req/gsml4xsd-lite
 |*Test 1* {set:cellbgcolor:#CACCCE} |/conf/gsml4xsd-lite-31/xsd {set:cellbgcolor:#FFFFFF}
 |Requirement |/req/gsml4xsd-lite-31/xsd
